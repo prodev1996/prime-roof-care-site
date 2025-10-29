@@ -1,34 +1,83 @@
-export default function RoofPaintingPage() {
-  return (
-    <section className="py-16 bg-slate-50 text-slate-900">
-      <div className="container-default max-w-3xl mx-auto">
-        <h1 className="text-3xl font-extrabold tracking-tight">
-          Roof Painting & Re-Coating Adelaide
-        </h1>
-        <p className="text-slate-600 mt-4 leading-relaxed">
-          A tired roof drags the whole place down. A professional re-coat lifts
-          the look instantly and protects it from harsh SA sun and salt air.
-          We focus on prep and even finish — not streaky DIY spray jobs.
-        </p>
+export const metadata = {
+  title: 'Roof Painting / Coating Adelaide | Prime Roof Care',
+  description:
+    'Professional roof painting in Adelaide. Correct primers and UV-stable topcoats for a modern, durable finish.',
+};
 
-        <div className="mt-8 space-y-4 text-slate-700 leading-relaxed text-sm">
-          <p>What you’re really paying for:</p>
-          <ul className="list-disc list-inside space-y-2">
-            <li>Proper clean and prep before any paint touches the roof</li>
-            <li>Crack & ridge repairs first (not painted over)</li>
-            <li>Quality coatings suited to SA weather</li>
-            <li>Even, consistent finish — no patchy shine</li>
-            <li>Colour advice so it doesn’t date the house</li>
+export default function RoofPaintingPage() {
+  const faq = [
+    { q: 'How long does coating last?', a: 'With correct prep and quality coatings, 8–12+ years is typical in SA conditions.' },
+    { q: 'Do you paint iron and tiles?', a: 'Yes. We match primers/sealers to concrete/terracotta tiles and metal profiles.' },
+    { q: 'Colour options?', a: 'Modern colour range to match facades and gutters — we can suggest popular choices for SA homes.' },
+  ];
+
+  return (
+    <section className="bg-slate-50 text-slate-900">
+      <div className="section-soft-surface border-b border-slate-200 py-14">
+        <div className="container-default max-w-5xl">
+          <p className="badge-soft">Prep • Prime • Protect</p>
+          <h1 className="mt-4 text-3xl sm:text-4xl font-extrabold tracking-tight">
+            Roof Painting / Coating <span className="text-emerald-600">Adelaide</span>
+          </h1>
+          <p className="mt-3 max-w-3xl text-slate-600">
+            We only coat after repairs and proper cleaning. Then we apply the
+            right primer and UV-stable topcoats for an even finish that lasts.
+          </p>
+          <div className="mt-6 flex flex-col sm:flex-row gap-4">
+            <a href="/quote" className="btn-solid-lg">Get coating quote</a>
+            <a href="tel:0469097690" className="btn-secondary">Call 0469 097 690</a>
+          </div>
+        </div>
+      </div>
+
+      <div className="container-default max-w-5xl py-14 grid lg:grid-cols-2 gap-10">
+        <div className="card-surface p-6 sm:p-8">
+          <h2 className="text-xl font-semibold">Our coating system</h2>
+          <ul className="mt-4 space-y-3 text-sm text-slate-700 list-disc list-inside">
+            <li>Repairs & high-pressure clean completed first</li>
+            <li>Primer/sealer selected for your roof material</li>
+            <li>Even, consistent topcoats with neat edges & vents</li>
+            <li>Gutters & paths protected; site left clean</li>
           </ul>
         </div>
 
-        <div className="mt-10 flex flex-col sm:flex-row gap-4">
-          <a href="/quote" className="btn-primary">
-            Ask about repaint options
-          </a>
-          <a href="tel:0469097690" className="btn-secondary">
-            Call 0469 097 690
-          </a>
+        <div className="card-surface p-6 sm:p-8">
+          <h2 className="text-xl font-semibold">FAQs</h2>
+          <dl className="mt-4 space-y-4">
+            {faq.map((f) => (
+              <div key={f.q}>
+                <dt className="font-medium">{f.q}</dt>
+                <dd className="text-sm text-slate-600 mt-1">{f.a}</dd>
+              </div>
+            ))}
+          </dl>
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                '@context': 'https://schema.org',
+                '@type': 'FAQPage',
+                mainEntity: faq.map((f) => ({
+                  '@type': 'Question',
+                  name: f.q,
+                  acceptedAnswer: { '@type': 'Answer', text: f.a },
+                })),
+              }),
+            }}
+          />
+        </div>
+      </div>
+
+      <div className="py-16 bg-white border-t border-slate-200">
+        <div className="container-default max-w-3xl text-center">
+          <h4 className="text-2xl font-extrabold">Ready to refresh the look?</h4>
+          <p className="mt-2 text-slate-600">
+            Ask for colour suggestions and a clear, itemised quote.
+          </p>
+          <div className="mt-6 flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="/quote" className="btn-solid-lg">Request a quote</a>
+            <a href="tel:0469097690" className="btn-secondary">Call 0469 097 690</a>
+          </div>
         </div>
       </div>
     </section>

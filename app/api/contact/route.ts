@@ -1,10 +1,9 @@
 import { NextResponse } from "next/server";
-import { Resend } from "resend";
 
 
 export const runtime = "nodejs";
-
-const resend = new Resend(process.env.RESEND_API_KEY || "");
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
 export async function POST(req: Request) {
   try {
@@ -20,12 +19,12 @@ export async function POST(req: Request) {
       _honeypot = "",
     } = body || {};
 
-    // basic anti-spam: if honeypot filled, ignore
+    // spam trap
     if (_honeypot && _honeypot.trim() !== "") {
       return NextResponse.json({ ok: true, skipped: true }, { status: 200 });
     }
 
-    // validate required fields
+    // basic validation
     if (!name || !email || !phone || !message) {
       return NextResponse.json(
         { ok: false, error: "Missing required fields." },
@@ -33,29 +32,30 @@ export async function POST(req: Request) {
       );
     }
 
-    // if we don't have env vars set yet, don't crash build:
     const FROM_EMAIL = process.env.FROM_EMAIL;
     const TO_EMAIL = process.env.TO_EMAIL;
     const API_KEY = process.env.RESEND_API_KEY;
 
+    
     if (!API_KEY || !FROM_EMAIL || !TO_EMAIL) {
-      // We return ok:false at runtime — BUT IMPORTANT:
-      // we DO NOT throw during build. This keeps Vercel build happy.
       console.warn(
-        "Missing email environment variables. Did you set RESEND_API_KEY, FROM_EMAIL, TO_EMAIL in Vercel?"
+        "Email not configured (RESEND_API_KEY / FROM_EMAIL / TO_EMAIL missing)."
       );
 
       return NextResponse.json(
         {
           ok: false,
           error:
-            "Email not configured. Please call us directly at 0469 097 690.",
+            "Email not configured yet. Please call 0469 097 690 or email primeroofcare@gmail.com.",
         },
         { status: 200 }
       );
     }
 
-    // build text/plain version
+    // Lazy import Resend ONLY inside the handler to avoid build-time crash.
+    const { Resend } = await import("resend");
+    const resend = new Resend(API_KEY);
+
     const textBody = `
 New ${title}
 
@@ -68,7 +68,6 @@ Message:
 ${message}
 `.trim();
 
-    // build HTML version
     const htmlBody = `
       <div style="font-family: system-ui, sans-serif; line-height:1.5; font-size:14px; color:#0f172a;">
         <p><strong>New ${title}</strong></p>
@@ -83,7 +82,6 @@ ${message}
       </div>
     `;
 
-    // send email via Resend
     const result = await resend.emails.send({
       from: `Prime Roof Care <${FROM_EMAIL}>`,
       to: [TO_EMAIL],
@@ -110,7 +108,7 @@ ${message}
 
     return NextResponse.json({ ok: true }, { status: 200 });
   } catch (err: any) {
-    console.error("Contact route error:", err);
+    console.error("Contact route crash:", err);
     return NextResponse.json(
       {
         ok: false,

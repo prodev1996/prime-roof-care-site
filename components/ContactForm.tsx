@@ -1,24 +1,10 @@
 'use client';
 
-import { useState, useMemo, useEffect } from 'react';
+import { useMemo, useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { sendWeb3Form } from '@/lib/w3f';
 import { isEmail, isPhone } from '@/lib/validate';
-import {
-  Mail,
-  Phone,
-  MapPin,
-  User,
-  MessageSquare,
-  ShieldCheck,
-} from 'lucide-react';
-
-async function postContact(data: any) {
-  const res = await fetch('/api/contact', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(data),
-  });
-  return res.json();
-}
+import { Mail, Phone, MapPin, User, MessageSquare, ShieldCheck, CheckCircle2 } from 'lucide-react';
 
 type FormState = 'idle' | 'sending' | 'success' | 'error';
 
@@ -31,31 +17,26 @@ export default function ContactForm() {
     phone: '',
     address: '',
     message: '',
-    title: 'Contact Request',
-    _honeypot: '',
   });
   const [touched, setTouched] = useState<Record<string, boolean>>({});
 
-  // validate fields
   const errors = useMemo(() => {
     const e: Record<string, string> = {};
     if (!form.name.trim()) e.name = 'Please enter your name.';
     if (!isEmail(form.email)) e.email = 'Enter a valid email.';
     if (!isPhone(form.phone)) e.phone = 'Enter a valid phone number.';
     if (form.message.trim().length < 10)
-      e.message = 'Please tell us a bit more (10+ chars).';
+      e.message = 'Please write at least 10 characters.';
     return e;
   }, [form]);
 
-  function decorate(field: string) {
-    const base = 'input-pro';
-    if (!touched[field]) return base;
-    return errors[field]
-      ? base + ' ring-2 ring-rose-400 border-rose-400'
-      : base + ' ring-2 ring-emerald-400 border-emerald-400';
-  }
+  const decorate = (f: string) =>
+    !touched[f]
+      ? 'input-pro'
+      : errors[f]
+      ? 'input-pro ring-2 ring-rose-400 border-rose-400'
+      : 'input-pro ring-2 ring-emerald-400 border-emerald-400';
 
-  // auto hide green success badge
   useEffect(() => {
     if (state === 'success') {
       const id = setTimeout(() => setState('idle'), 6000);
@@ -67,14 +48,7 @@ export default function ContactForm() {
     e.preventDefault();
     if (state === 'sending') return;
 
-    // mark touched
-    setTouched({
-      name: true,
-      email: true,
-      phone: true,
-      address: true,
-      message: true,
-    });
+    setTouched({ name: true, email: true, phone: true, address: true, message: true });
 
     if (Object.keys(errors).length) {
       setState('error');
@@ -83,119 +57,120 @@ export default function ContactForm() {
     }
 
     setState('sending');
+    setErrMsg('');
 
     try {
-      const { ok, error } = await postContact(form);
+      await sendWeb3Form({
+        subject: 'Prime Roof Care – Contact Form',
+        name: form.name,
+        email: form.email,
+        message: [
+          `Phone: ${form.phone}`,
+          `Address: ${form.address}`,
+          '',
+          form.message,
+        ].join('\n'),
+      });
 
-      if (ok) {
-        setState('success');
-        setForm({ ...form, message: '' });
-        setTouched({});
-      } else {
-        setState('error');
-        setErrMsg(
-          error || 'Something went wrong. Please call 0469 097 690.'
-        );
-      }
+      setState('success');
+      setForm({ name: '', email: '', phone: '', address: '', message: '' });
+      setTouched({});
     } catch (err: any) {
       setState('error');
-      setErrMsg(
-        err?.message || 'Something went wrong. Please call 0469 097 690.'
-      );
+      setErrMsg(err?.message || 'Submission failed. Please call 0469 097 690.');
     }
   }
 
   return (
     <div className="relative">
-      {state === 'success' && (
-        <div className="absolute -top-10 left-0 right-0 flex justify-center z-10">
-          <div className="toast-success">
-            👍 We’ve got your message. We’ll reach out shortly.
-          </div>
-        </div>
-      )}
+      {/* ✅ Success Popup Animation */}
+      <AnimatePresence>
+        {state === 'success' && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.7, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.8, y: -20 }}
+            transition={{ duration: 0.4, ease: 'easeOut' }}
+            className="fixed inset-0 flex items-center justify-center bg-black/50 backdrop-blur-sm z-50"
+          >
+            <motion.div
+              initial={{ scale: 0.8 }}
+              animate={{ scale: 1 }}
+              exit={{ scale: 0.8 }}
+              transition={{ duration: 0.3 }}
+              className="bg-white rounded-2xl p-8 shadow-2xl text-center max-w-sm mx-auto"
+            >
+              <CheckCircle2 size={60} className="mx-auto text-emerald-500 mb-4" />
+              <h2 className="text-xl font-semibold mb-2 text-gray-800">
+                Message Sent Successfully!
+              </h2>
+              <p className="text-gray-600 mb-6">
+                Thank you for reaching out. We’ll get back to you soon.
+              </p>
+              <button
+                onClick={() => setState('idle')}
+                className="btn-solid-lg px-6 py-2 text-sm"
+              >
+                Close
+              </button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
-      <form
-        onSubmit={onSubmit}
-        noValidate
-        className="form-shell p-6 sm:p-8 space-y-6 relative z-0"
-      >
+      {/* Contact Form */}
+      <form onSubmit={onSubmit} noValidate className="form-shell p-6 sm:p-8 space-y-6">
         {/* Name */}
         <div>
           <label className="field-label">
-            <span className="field-icon">
-              <User size={14} />
-            </span>
-            <span>Name</span>
+            <User size={14} className="field-icon" /> Name
           </label>
           <input
             className={decorate('name')}
             value={form.name}
             onChange={(e) => setForm({ ...form, name: e.target.value })}
-            onBlur={() => setTouched((t) => ({ ...t, name: true }))}
             placeholder="Your name"
-            required
           />
-          {touched.name && errors.name && (
-            <p className="error-text">{errors.name}</p>
-          )}
+          {touched.name && errors.name && <p className="error-text">{errors.name}</p>}
         </div>
 
         {/* Email */}
         <div>
           <label className="field-label">
-            <span className="field-icon">
-              <Mail size={14} />
-            </span>
-            <span>Email</span>
+            <Mail size={14} className="field-icon" /> Email
           </label>
           <input
             className={decorate('email')}
             value={form.email}
             onChange={(e) => setForm({ ...form, email: e.target.value })}
-            onBlur={() => setTouched((t) => ({ ...t, email: true }))}
             placeholder="you@example.com"
-            required
           />
-          {touched.email && errors.email && (
-            <p className="error-text">{errors.email}</p>
-          )}
+          {touched.email && errors.email && <p className="error-text">{errors.email}</p>}
         </div>
 
         {/* Phone */}
         <div>
           <label className="field-label">
-            <span className="field-icon">
-              <Phone size={14} />
-            </span>
-            <span>Phone</span>
+            <Phone size={14} className="field-icon" /> Phone
           </label>
           <input
             className={decorate('phone')}
             value={form.phone}
             onChange={(e) => setForm({ ...form, phone: e.target.value })}
-            onBlur={() => setTouched((t) => ({ ...t, phone: true }))}
             placeholder="0469 097 690"
-            required
           />
-          {touched.phone && errors.phone && (
-            <p className="error-text">{errors.phone}</p>
-          )}
+          {touched.phone && errors.phone && <p className="error-text">{errors.phone}</p>}
         </div>
 
         {/* Address */}
         <div>
           <label className="field-label">
-            <span className="field-icon">
-              <MapPin size={14} />
-            </span>
-            <span>Address / Suburb</span>
+            <MapPin size={14} className="field-icon" /> Address / Suburb
           </label>
           <input
             className={decorate('address')}
             value={form.address}
             onChange={(e) => setForm({ ...form, address: e.target.value })}
-            onBlur={() => setTouched((t) => ({ ...t, address: true }))}
             placeholder="Aldinga Beach, SA"
           />
         </div>
@@ -203,55 +178,26 @@ export default function ContactForm() {
         {/* Message */}
         <div>
           <label className="field-label">
-            <span className="field-icon">
-              <MessageSquare size={14} />
-            </span>
-            <span>How can we help?</span>
+            <MessageSquare size={14} className="field-icon" /> How can we help?
           </label>
           <textarea
             className={decorate('message') + ' min-h-[120px]'}
             value={form.message}
             onChange={(e) => setForm({ ...form, message: e.target.value })}
-            onBlur={() => setTouched((t) => ({ ...t, message: true }))}
-            placeholder="Roof leak, gutter clean, repaint, etc."
-            required
+            placeholder="Roof leak, repaint, etc."
           />
-          {touched.message && errors.message && (
-            <p className="error-text">{errors.message}</p>
-          )}
+          {touched.message && errors.message && <p className="error-text">{errors.message}</p>}
         </div>
 
-        {/* Submit + reassurance */}
-        <div className="flex flex-col sm:flex-row sm:items-start gap-4 sm:gap-6">
-          <button
-            type="submit"
-            disabled={state === 'sending'}
-            className="btn-solid-lg"
-          >
-            <ShieldCheck size={18} className="mr-2" />
-            {state === 'sending' ? 'Sending…' : 'Send Message'}
-          </button>
+        {/* Submit */}
+        <button type="submit" disabled={state === 'sending'} className="btn-solid-lg">
+          <ShieldCheck size={18} className="mr-2" />
+          {state === 'sending' ? 'Sending…' : 'Send Message'}
+        </button>
 
-          {state === 'error' && errMsg && (
-            <div className="text-rose-500 text-sm font-medium">
-              {errMsg}
-            </div>
-          )}
-
-          {state !== 'error' && (
-            <p className="form-helper-text">
-              We’ll only use your details to respond to this enquiry.
-              Prefer to talk? Call{' '}
-              <a
-                className="text-slate-700 font-semibold"
-                href="tel:0469097690"
-              >
-                0469 097 690
-              </a>
-              .
-            </p>
-          )}
-        </div>
+        {state === 'error' && errMsg && (
+          <p className="text-rose-500 text-sm font-medium">{errMsg}</p>
+        )}
       </form>
     </div>
   );

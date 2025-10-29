@@ -1,0 +1,115 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* === Base === */
+body {
+  @apply bg-slate-50 text-slate-900 antialiased;
+  background-image: var(--bg-grad);
+}
+
+:root {
+  --bg-grad:
+    radial-gradient(circle at 10% 10%, rgba(16,185,129,.08) 0%, rgba(255,255,255,0) 60%),
+    radial-gradient(circle at 80% 0%, rgba(37,99,235,.06) 0%, rgba(255,255,255,0) 60%);
+}
+
+/* === Layout === */
+.container-default {
+  @apply max-w-7xl mx-auto px-6;
+}
+
+/* === Surfaces & Cards === */
+.card-surface {
+  @apply bg-white border border-slate-200 rounded-2xl shadow-card;
+}
+
+.surface-halo {
+  @apply relative z-0 overflow-hidden rounded-2xl border border-slate-200 bg-white/90 backdrop-blur-sm shadow-[0_10px_30px_rgba(0,0,0,0.04)];
+}
+
+.section-soft-surface {
+  @apply bg-gradient-to-b from-white via-slate-50/60 to-white;
+}
+
+/* === Shadows === */
+.shadow-card {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.shadow-badge {
+  box-shadow: 0 2px 6px rgba(16, 185, 129, 0.15);
+}
+
+/* === Buttons === */
+.btn-primary {
+  @apply inline-flex items-center justify-center rounded-xl bg-emerald-500 hover:bg-emerald-400 text-white font-semibold px-6 py-3 shadow-card transition disabled:opacity-60 disabled:cursor-not-allowed;
+}
+
+.btn-secondary {
+  @apply inline-flex items-center justify-center rounded-xl bg-white hover:bg-slate-50 text-slate-900 font-semibold px-6 py-3 border border-slate-300 shadow-card transition disabled:opacity-60 disabled:cursor-not-allowed;
+}
+
+.btn-solid-lg {
+  @apply inline-flex items-center justify-center rounded-xl bg-emerald-500 hover:bg-emerald-400 text-white font-semibold px-6 py-3 text-base shadow-[0_6px_16px_rgba(16,185,129,0.25)] transition-all disabled:opacity-60 disabled:cursor-not-allowed;
+  letter-spacing: 0.02em;
+}
+
+/* === Inputs & Forms === */
+.input-light {
+  @apply w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-400/70 text-base shadow-card;
+}
+
+.input-pro {
+  @apply w-full rounded-xl border border-slate-200 bg-white/90 px-4 py-3 text-slate-900 placeholder-slate-400 focus:outline-none text-[15px] shadow-[0_2px_6px_rgba(0,0,0,0.04)];
+}
+
+.field-label {
+  @apply text-slate-700 text-sm font-semibold mb-1 flex items-center gap-2;
+}
+
+.field-icon {
+  @apply inline-flex items-center justify-center w-4 h-4 text-emerald-500;
+}
+
+.form-shell {
+  @apply bg-white/80 border border-slate-200 rounded-2xl shadow-[0_8px_24px_rgba(0,0,0,0.04)] backdrop-blur-md;
+}
+
+.form-helper-text {
+  @apply text-xs text-slate-500 leading-snug max-w-sm;
+}
+
+.error-text {
+  @apply text-rose-500 text-xs mt-1 font-medium;
+}
+
+/* === Toasts & Alerts === */
+.toast-success {
+  @apply rounded-xl bg-emerald-500 text-white text-sm font-semibold px-4 py-2 shadow-[0_4px_14px_rgba(16,185,129,0.4)];
+}
+
+/* === Badges === */
+.badge-soft {
+  @apply inline-flex items-center gap-2 rounded-full bg-emerald-50 text-emerald-700 text-[11px] font-medium px-3 py-1 border border-emerald-200 shadow-badge;
+}
+
+/* === Utility Animations === */
+.fade-up {
+  animation: fadeUp 0.6s ease-out forwards;
+}
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* === Extra polish === */
+::selection {
+  background-color: rgba(16,185,129,0.3);
+}

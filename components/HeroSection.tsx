@@ -41,11 +41,11 @@ export default function HeroSection() {
 
           {/* Main headline */}
           <h1 className="mt-5 text-4xl sm:text-5xl font-extrabold leading-[1.1] tracking-tight text-slate-900">
-            Roof & gutter specialists
+            Roof & gutter Specialist
             <br className="hidden sm:block" />
             in{' '}
             <span className="text-emerald-600">
-              Aldinga Beach / Adelaide
+                Adelaide
             </span>
             .
           </h1>

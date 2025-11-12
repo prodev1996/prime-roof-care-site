@@ -34,9 +34,7 @@ export default function Navbar() {
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-4 py-3 md:px-6">
         {/* Logo + brand */}
         <Link href="/" className="flex items-center gap-3">
-          {/* logo box */}
           <div className="flex h-16 w-28 items-center justify-center rounded-xl bg-white px-2 shadow-sm ring-1 ring-slate-100 overflow-hidden">
-            {/* use your logo from /public/logo.png */}
             <Image
               src="/logo.png"
               alt="Prime Roof Care Logo"
@@ -51,9 +49,8 @@ export default function Navbar() {
               Prime Roof Care
             </p>
             <p className="text-xs text-slate-500">South Australia</p>
-            {/* put tagline here so it is always visible */}
             <p className="text-[10px] uppercase tracking-wide text-slate-400">
-              Your roof, our responsibility
+              YOUR ROOF, OUR RESPONSIBILITY
             </p>
           </div>
         </Link>
@@ -73,8 +70,9 @@ export default function Navbar() {
 
         {/* Desktop actions */}
         <div className="hidden items-center gap-3 md:flex">
+          {/* FIXED: link goes to /quote now */}
           <Link
-            href="/get-a-quote"
+            href="/quote"
             className="rounded-full bg-emerald-50 px-4 py-2 text-sm font-semibold text-emerald-700 shadow-sm shadow-emerald-50 transition hover:bg-emerald-100"
           >
             Get a Quote
@@ -112,8 +110,9 @@ export default function Navbar() {
                 {item.name}
               </Link>
             ))}
+            {/* mobile get a quote also fixed */}
             <Link
-              href="/get-a-quote"
+              href="/quote"
               onClick={() => setIsOpen(false)}
               className="mt-2 rounded-lg bg-emerald-50 px-3 py-2 text-sm font-semibold text-emerald-700 hover:bg-emerald-100"
             >

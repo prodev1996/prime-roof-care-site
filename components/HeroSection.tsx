@@ -38,15 +38,13 @@ export default function HeroSection() {
             <span>20+ years experience on the tools</span>
           </div>
 
-          {/* Main headline */}
+          {/* 🟢 Corrected Main headline (NO SPECIALISTIN BUG) */}
           <h1 className="mt-5 text-4xl sm:text-5xl font-extrabold leading-[1.1] tracking-tight text-slate-900">
             Roof & gutter Specialist
+            {/* show break on medium and above */}
             <br className="hidden sm:block" />
-            in{' '}
-            <span className="text-emerald-600">
-                Adelaide
-            </span>
-            .
+            {/* ALWAYS add space, even if break disappears */}
+            {' '}in <span className="text-emerald-600">Adelaide.</span>
           </h1>
 
           {/* Animated service line */}
@@ -163,7 +161,7 @@ export default function HeroSection() {
               />
             </div>
 
-            {/* bottom strip text */}
+            {/* Bottom strip */}
             <div className="px-5 py-4 bg-white/70 backdrop-blur border-t border-slate-200 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
               <div className="text-[13px] leading-tight text-slate-700">
                 <div className="font-semibold text-slate-900">

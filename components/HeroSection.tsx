@@ -33,7 +33,6 @@ export default function HeroSection() {
           <div className="inline-flex items-center gap-2 rounded-full bg-white/80 backdrop-blur border border-slate-200 text-[11px] font-medium text-slate-700 px-3 py-1 shadow-[0_20px_40px_rgba(0,0,0,0.08)]">
             <span className="inline-flex items-center text-emerald-600">
               <Sparkles size={14} className="mr-1" />
-              New in Adelaide
             </span>
             <span className="text-slate-400">|</span>
             <span>20+ years experience on the tools</span>
@@ -73,7 +72,7 @@ export default function HeroSection() {
 
           {/* Body copy */}
           <p className="mt-5 text-base sm:text-lg text-slate-600 leading-relaxed max-w-xl">
-            Licensed & insured. Respectful on-site quotes. No scare tactics,
+            Insured. Respectful on-site quotes. No scare tactics,
             no mess. We treat your home like it’s ours.
           </p>
 
@@ -103,7 +102,7 @@ export default function HeroSection() {
               </span>
               <div>
                 <div className="font-semibold text-slate-900 text-sm">
-                  Licensed & insured
+                  Insured
                 </div>
                 <div className="text-slate-500 leading-snug">
                   Fully covered, no worries.

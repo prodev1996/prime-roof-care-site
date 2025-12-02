@@ -14,7 +14,7 @@ export default function StatBar() {
     },
     {
       icon: ShieldCheck,
-      title: 'Licensed & insured',
+      title: 'Insured',
       desc: 'Respectful, tidy, professional',
       accent:
         'bg-gradient-to-br from-emerald-500 to-teal-400 text-white shadow-[0_16px_32px_rgba(16,185,129,0.4)]',

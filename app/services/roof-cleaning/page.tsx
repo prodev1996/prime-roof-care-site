@@ -82,7 +82,7 @@ export default function RoofCleaningPage() {
       <div className="py-16">
         <div className="container-default max-w-3xl text-center">
           <h4 className="text-2xl font-extrabold">Make your roof look new again</h4>
-          <p className="mt-2 text-slate-600">Fast quotes. Licensed & insured.</p>
+          <p className="mt-2 text-slate-600">Fast quotes. Insured.</p>
           <div className="mt-6 flex flex-col sm:flex-row gap-4 justify-center">
             <a href="/quote" className="btn-solid-lg">Get my quote</a>
             <a href="tel:0469097690" className="btn-secondary">Call 0469 097 690</a>

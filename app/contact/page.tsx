@@ -45,7 +45,7 @@ export default function ContactPage() {
 
           <div className="mt-8 text-xs text-slate-500 leading-relaxed">
             <p>
-              Licensed & insured. Respectful on-site quotes. We treat your
+              Insured. Respectful on-site quotes. We treat your
               property like it’s ours.
             </p>
           </div>

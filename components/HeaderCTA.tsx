@@ -6,7 +6,7 @@ export default function HeaderCTA() {
       <div className="container-default py-6 grid gap-4 sm:grid-cols-3 text-center text-xs sm:text-sm text-slate-600">
         <div className="flex items-center justify-center gap-2">
           <ShieldCheck className="h-4 w-4 text-emerald-600" />
-          <span>Licensed & insured</span>
+          <span>Insured</span>
         </div>
         <div className="flex items-center justify-center gap-2">
           <Clock className="h-4 w-4 text-sky-600" />

@@ -47,7 +47,7 @@ export default function AboutPage() {
                   <ShieldCheck className="h-5 w-5 text-emerald-600" />
                 </div>
                 <div>
-                  <div className="text-slate-900 font-semibold">Licensed & insured</div>
+                  <div className="text-slate-900 font-semibold">Insured</div>
                   <div className="text-slate-500 text-sm">Respectful, tidy, professional</div>
                 </div>
               </div>

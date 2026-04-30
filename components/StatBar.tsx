@@ -1,56 +1,49 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Hammer, MapPin, ShieldCheck } from "lucide-react";
+import { MapPin, ShieldCheck, Sparkles } from "lucide-react";
 
 const stats = [
   {
-    icon: Hammer,
-    title: "Roof system focus",
-    desc: "Gutters, tiles, leaks, cleaning and coatings",
-    accent: "bg-slate-900 text-white shadow-[0_16px_32px_rgba(15,23,42,0.2)]",
-  },
-  {
     icon: ShieldCheck,
-    title: "Insured and tidy",
-    desc: "Practical protection for your property",
-    accent: "bg-emerald-600 text-white shadow-[0_16px_32px_rgba(5,150,105,0.22)]",
+    value: "Insured",
+    label: "Roof cleaning, gutters, restoration and coating",
   },
   {
     icon: MapPin,
-    title: "Three regions",
-    desc: "Adelaide, Melbourne and Tasmania",
-    accent: "bg-sky-600 text-white shadow-[0_16px_32px_rgba(2,132,199,0.22)]",
+    value: "3 regions",
+    label: "Adelaide, Melbourne and Tasmania",
+  },
+  {
+    icon: Sparkles,
+    value: "Photo proof",
+    label: "Before/after project imagery available",
   },
 ];
 
 export default function StatBar() {
   return (
-    <section className="border-y border-slate-200/80 bg-white">
-      <div className="container-default grid gap-8 py-12 text-center text-sm text-slate-700 sm:grid-cols-3">
-        {stats.map((item, i) => (
+    <section className="bg-[#f6f4ef] py-8">
+      <div className="container-default grid gap-4 md:grid-cols-3">
+        {stats.map((item, index) => (
           <motion.div
-            key={item.title}
-            initial={{ opacity: 0, y: 20 }}
+            key={item.value}
+            initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.45, delay: i * 0.12, ease: "easeOut" }}
+            transition={{ duration: 0.45, delay: index * 0.08 }}
             viewport={{ once: true }}
-            whileHover={{ y: -4, transition: { duration: 0.2 } }}
-            className="flex flex-col items-center gap-3 rounded-lg border border-slate-200 bg-slate-50 p-6"
+            className="flex items-center gap-4 rounded-lg border border-black/10 bg-white p-5 shadow-[0_18px_45px_rgba(20,32,29,0.08)]"
           >
-            <div
-              className={
-                "flex h-12 w-12 items-center justify-center rounded-lg ring-1 ring-black/10 " +
-                item.accent
-              }
-            >
-              <item.icon className="h-5 w-5" />
+            <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-[#12342d] text-[#d99a2b]">
+              <item.icon size={22} />
             </div>
-            <div className="text-lg font-semibold leading-tight tracking-tight text-slate-900">
-              {item.title}
-            </div>
-            <div className="max-w-[14rem] text-xs leading-relaxed text-slate-500">
-              {item.desc}
+            <div>
+              <div className="text-2xl font-black leading-none text-[#14201d]">
+                {item.value}
+              </div>
+              <div className="mt-1 text-sm font-semibold leading-snug text-slate-500">
+                {item.label}
+              </div>
             </div>
           </motion.div>
         ))}

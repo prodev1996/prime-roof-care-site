@@ -4,67 +4,77 @@
 
 :root {
   color-scheme: light;
+  --ink: #14201d;
+  --roof: #12342d;
+  --leaf: #0f8a62;
+  --gold: #d99a2b;
+  --mist: #f4f7f4;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  @apply bg-slate-50 text-slate-900 antialiased;
+  @apply bg-[#f6f4ef] text-slate-900 antialiased;
 }
 
 .container-default {
-  @apply mx-auto max-w-7xl px-6;
+  @apply mx-auto max-w-7xl px-5 sm:px-6;
+}
+
+.section-pad {
+  @apply py-16 sm:py-20;
+}
+
+.eyebrow {
+  @apply inline-flex items-center gap-2 rounded-full border border-emerald-900/10 bg-white/80 px-3 py-1 text-xs font-bold uppercase tracking-[0.16em] text-emerald-800 shadow-[0_12px_32px_rgba(20,32,29,0.08)];
 }
 
 .card-surface {
-  @apply rounded-lg border border-slate-200 bg-white shadow-card;
+  @apply rounded-lg border border-black/10 bg-white shadow-[0_18px_48px_rgba(20,32,29,0.10)];
 }
 
 .surface-halo {
-  @apply relative z-0 overflow-hidden rounded-lg border border-slate-200 bg-white shadow-[0_10px_30px_rgba(15,23,42,0.06)];
+  @apply rounded-lg border border-black/10 bg-white shadow-[0_18px_48px_rgba(20,32,29,0.10)];
 }
 
 .section-soft-surface {
-  @apply bg-white;
-}
-
-.shadow-card {
-  box-shadow: 0 14px 40px rgba(15, 23, 42, 0.08);
-}
-
-.shadow-badge {
-  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+  @apply bg-[#f6f4ef];
 }
 
 .btn-primary {
-  @apply inline-flex items-center justify-center rounded-lg bg-emerald-600 px-6 py-3 font-semibold text-white shadow-card transition hover:bg-emerald-500 disabled:cursor-not-allowed disabled:opacity-60;
+  @apply inline-flex min-h-12 items-center justify-center rounded-lg bg-[#12342d] px-6 py-3 font-bold text-white shadow-[0_18px_36px_rgba(18,52,45,0.24)] transition hover:-translate-y-0.5 hover:bg-[#0f8a62] disabled:cursor-not-allowed disabled:opacity-60;
 }
 
 .btn-secondary {
-  @apply inline-flex items-center justify-center rounded-lg border border-slate-300 bg-white px-6 py-3 font-semibold text-slate-900 shadow-card transition hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-60;
+  @apply inline-flex min-h-12 items-center justify-center rounded-lg border border-black/15 bg-white px-6 py-3 font-bold text-[#14201d] shadow-[0_14px_28px_rgba(20,32,29,0.08)] transition hover:-translate-y-0.5 hover:border-emerald-700/30 hover:bg-emerald-50 disabled:cursor-not-allowed disabled:opacity-60;
 }
 
 .btn-solid-lg {
-  @apply inline-flex items-center justify-center rounded-lg bg-emerald-600 px-6 py-3 text-base font-semibold text-white shadow-[0_12px_24px_rgba(5,150,105,0.22)] transition-all hover:bg-emerald-500 disabled:cursor-not-allowed disabled:opacity-60;
+  @apply inline-flex min-h-12 items-center justify-center rounded-lg bg-[#12342d] px-6 py-3 text-base font-bold text-white shadow-[0_18px_36px_rgba(18,52,45,0.24)] transition-all hover:-translate-y-0.5 hover:bg-[#0f8a62] disabled:cursor-not-allowed disabled:opacity-60;
   letter-spacing: 0;
 }
 
-.input-light {
-  @apply w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-base text-slate-800 shadow-card placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-400/70;
-}
-
+.input-light,
 .input-pro {
-  @apply w-full rounded-lg border border-slate-200 bg-white px-4 py-3 text-[15px] text-slate-900 shadow-[0_2px_6px_rgba(15,23,42,0.04)] placeholder-slate-400 focus:outline-none;
+  @apply w-full rounded-lg border border-black/10 bg-white px-4 py-3 text-[15px] text-slate-900 shadow-[0_8px_24px_rgba(20,32,29,0.05)] placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-700/25;
 }
 
 .field-label {
-  @apply mb-1 flex items-center gap-2 text-sm font-semibold text-slate-700;
+  @apply mb-1 flex items-center gap-2 text-sm font-bold text-slate-800;
 }
 
 .field-icon {
-  @apply inline-flex h-4 w-4 items-center justify-center text-emerald-600;
+  @apply inline-flex h-4 w-4 items-center justify-center text-emerald-700;
 }
 
 .form-shell {
-  @apply rounded-lg border border-slate-200 bg-white shadow-[0_14px_40px_rgba(15,23,42,0.08)];
+  @apply rounded-lg border border-black/10 bg-white shadow-[0_24px_60px_rgba(20,32,29,0.12)];
 }
 
 .form-helper-text {
@@ -72,15 +82,26 @@ body {
 }
 
 .error-text {
-  @apply mt-1 text-xs font-medium text-rose-500;
+  @apply mt-1 text-xs font-semibold text-rose-600;
 }
 
 .toast-success {
-  @apply rounded-lg bg-emerald-600 px-4 py-2 text-sm font-semibold text-white shadow-[0_4px_14px_rgba(16,185,129,0.4)];
+  @apply rounded-lg bg-emerald-700 px-4 py-2 text-sm font-bold text-white shadow-[0_16px_34px_rgba(15,138,98,0.28)];
 }
 
 .badge-soft {
-  @apply inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700 shadow-badge;
+  @apply inline-flex items-center gap-2 rounded-full border border-emerald-900/10 bg-emerald-50 px-3 py-1 text-xs font-bold text-emerald-800 shadow-[0_10px_24px_rgba(20,32,29,0.08)];
+}
+
+.image-lift {
+  @apply overflow-hidden rounded-lg shadow-[0_28px_70px_rgba(20,32,29,0.22)];
+}
+
+.grain-overlay {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 42px 42px;
 }
 
 .fade-up {
@@ -99,48 +120,5 @@ body {
 }
 
 ::selection {
-  background-color: rgba(16, 185, 129, 0.3);
-}
-
-.nav-underline {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.25rem;
-}
-
-.nav-underline::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -6px;
-  height: 2px;
-  border-radius: 999px;
-  background: linear-gradient(90deg, rgba(16, 185, 129, 0.9), rgba(59, 130, 246, 0.9));
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.28s ease;
-  opacity: 0.9;
-}
-
-.nav-underline:hover::after {
-  transform: scaleX(1);
-}
-
-.dark body {
-  @apply bg-slate-950 text-slate-100;
-}
-
-.dark .card-surface,
-.dark .form-shell {
-  @apply border-slate-700 bg-slate-900/90;
-}
-
-.dark .btn-secondary {
-  @apply border-slate-700 bg-slate-800 text-slate-100 hover:bg-slate-700;
-}
-
-.dark .btn-primary {
-  @apply bg-emerald-600 hover:bg-emerald-500;
+  background-color: rgba(217, 154, 43, 0.35);
 }

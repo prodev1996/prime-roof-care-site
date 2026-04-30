@@ -3,14 +3,13 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { MapPin, Menu, Phone, X } from "lucide-react";
+import { Menu, Phone, ShieldCheck, X } from "lucide-react";
 import { usePathname } from "next/navigation";
 
 const navLinks = [
-  { name: "Home", href: "/" },
   { name: "Services", href: "/services" },
-  { name: "About", href: "/about" },
   { name: "Gallery", href: "/gallery" },
+  { name: "About", href: "/about" },
   { name: "Contact", href: "/contact" },
 ];
 
@@ -20,7 +19,7 @@ export default function Navbar() {
   const pathname = usePathname();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 10);
+    const onScroll = () => setScrolled(window.scrollY > 8);
     window.addEventListener("scroll", onScroll);
     onScroll();
     return () => window.removeEventListener("scroll", onScroll);
@@ -28,91 +27,77 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 z-50">
-      <div className="bg-slate-900 text-white">
-        <div className="mx-auto flex max-w-7xl items-center justify-center gap-2 px-4 py-2 text-xs font-medium md:justify-between md:px-6">
+      <div className="bg-[#12342d] text-white">
+        <div className="container-default flex items-center justify-center gap-3 py-2 text-[11px] font-bold uppercase tracking-[0.14em] text-emerald-50 md:justify-between">
           <span className="inline-flex items-center gap-2">
-            <MapPin size={14} className="text-emerald-300" />
-            Adelaide, Melbourne and Tasmania
+            <ShieldCheck size={14} className="text-[#d99a2b]" />
+            Adelaide - Melbourne - Tasmania
           </span>
-          <span className="hidden text-slate-300 md:inline">
-            Roof cleaning, gutters, repairs, restoration and coating
+          <span className="hidden text-white/70 md:inline">
+            Roof cleaning / gutters / restorations / coatings
           </span>
         </div>
       </div>
 
-      <div
-        className={`backdrop-blur transition-all ${
-          scrolled ? "bg-white/95 shadow-sm" : "bg-white/85"
-        }`}
-      >
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-4 py-3 md:px-6">
+      <div className={scrolled ? "bg-white/94 shadow-[0_18px_45px_rgba(20,32,29,0.12)] backdrop-blur" : "bg-white/90 backdrop-blur"}>
+        <div className="container-default flex items-center justify-between gap-5 py-3">
           <Link href="/" className="flex items-center gap-3">
-            <div className="flex h-14 w-24 items-center justify-center overflow-hidden rounded-lg bg-white px-2 shadow-sm ring-1 ring-slate-100">
+            <span className="flex h-14 w-24 items-center justify-center overflow-hidden rounded-lg border border-black/10 bg-white px-2 shadow-sm">
               <Image
                 src="/logo.png"
                 alt="Prime Roof Care"
-                width={110}
-                height={60}
+                width={112}
+                height={62}
                 className="object-contain"
                 priority
               />
-            </div>
-            <div className="leading-tight">
-              <p className="text-base font-semibold text-slate-900">
+            </span>
+            <span className="hidden leading-tight sm:block">
+              <span className="block text-base font-black text-[#14201d]">
                 Prime Roof Care
-              </p>
-              <p className="text-xs text-slate-500">Roof & gutter care</p>
-              <p className="text-[10px] uppercase tracking-wide text-slate-400">
-                YOUR ROOF, OUR RESPONSIBILITY
-              </p>
-            </div>
+              </span>
+              <span className="block text-xs font-semibold text-slate-500">
+                Roof care with a clean finish
+              </span>
+            </span>
           </Link>
 
-          <nav className="hidden items-center gap-6 md:flex">
+          <nav className="hidden items-center gap-1 rounded-full border border-black/10 bg-[#f6f4ef] p-1 md:flex">
             {navLinks.map((item) => {
-              const isActive =
+              const active =
                 item.href === "/"
                   ? pathname === "/"
                   : pathname.startsWith(item.href);
-
               return (
                 <Link
                   key={item.name}
                   href={item.href}
-                  className={`relative text-sm font-medium transition ${
-                    isActive
-                      ? "text-slate-900"
-                      : "text-slate-500 hover:text-slate-900"
+                  className={`rounded-full px-4 py-2 text-sm font-bold transition ${
+                    active
+                      ? "bg-white text-[#12342d] shadow-sm"
+                      : "text-slate-600 hover:bg-white/70 hover:text-[#12342d]"
                   }`}
                 >
                   {item.name}
-                  {isActive && (
-                    <span className="absolute -bottom-2 left-0 h-[2px] w-full rounded-full bg-emerald-500" />
-                  )}
                 </Link>
               );
             })}
           </nav>
 
-          <div className="hidden items-center gap-3 md:flex">
-            <Link
-              href="/quote"
-              className="rounded-lg bg-emerald-50 px-4 py-2 text-sm font-semibold text-emerald-700 shadow-sm shadow-emerald-50 transition hover:bg-emerald-100"
-            >
-              Get a Quote
-            </Link>
-            <a
-              href="tel:0469097690"
-              className="inline-flex items-center gap-2 rounded-lg bg-emerald-600 px-5 py-2 text-sm font-semibold text-white shadow-md transition hover:bg-emerald-500"
-            >
-              <Phone size={16} />
+          <div className="hidden items-center gap-2 md:flex">
+            <a href="tel:0469097690" className="btn-secondary min-h-10 px-4 py-2 text-sm">
+              <Phone size={16} className="mr-2" />
               0469 097 690
             </a>
+            <Link href="/quote" className="btn-primary min-h-10 px-4 py-2 text-sm">
+              Get a Quote
+            </Link>
           </div>
 
           <button
+            type="button"
             onClick={() => setIsOpen((prev) => !prev)}
-            className="inline-flex items-center justify-center rounded-lg bg-white p-2 text-slate-700 shadow-sm ring-1 ring-slate-200 md:hidden"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-lg border border-black/10 bg-white text-[#14201d] shadow-sm md:hidden"
             aria-label="Toggle menu"
           >
             {isOpen ? <X size={20} /> : <Menu size={20} />}
@@ -120,39 +105,27 @@ export default function Navbar() {
         </div>
 
         {isOpen && (
-          <div className="border-t bg-white/95 pb-4 pt-2 shadow-sm md:hidden">
-            <div className="mx-auto flex max-w-7xl flex-col gap-2 px-4">
-              {navLinks.map((item) => {
-                const isActive =
-                  item.href === "/"
-                    ? pathname === "/"
-                    : pathname.startsWith(item.href);
-                return (
-                  <Link
-                    key={item.name}
-                    href={item.href}
-                    onClick={() => setIsOpen(false)}
-                    className={`rounded-lg px-2 py-2 text-sm font-medium hover:bg-slate-50 ${
-                      isActive ? "text-slate-900" : "text-slate-700"
-                    }`}
-                  >
-                    {item.name}
-                  </Link>
-                );
-              })}
+          <div className="border-t border-black/10 bg-white pb-4 pt-2 md:hidden">
+            <div className="container-default flex flex-col gap-2">
+              {navLinks.map((item) => (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  onClick={() => setIsOpen(false)}
+                  className="rounded-lg px-3 py-3 text-sm font-bold text-slate-700 hover:bg-[#f6f4ef]"
+                >
+                  {item.name}
+                </Link>
+              ))}
               <Link
                 href="/quote"
                 onClick={() => setIsOpen(false)}
-                className="mt-2 rounded-lg bg-emerald-50 px-3 py-2 text-sm font-semibold text-emerald-700 hover:bg-emerald-100"
+                className="btn-primary mt-2"
               >
                 Get a Quote
               </Link>
-              <a
-                href="tel:0469097690"
-                onClick={() => setIsOpen(false)}
-                className="inline-flex items-center gap-2 rounded-lg bg-emerald-600 px-3 py-2 text-sm font-semibold text-white hover:bg-emerald-500"
-              >
-                <Phone size={16} />
+              <a href="tel:0469097690" className="btn-secondary">
+                <Phone size={16} className="mr-2" />
                 0469 097 690
               </a>
             </div>

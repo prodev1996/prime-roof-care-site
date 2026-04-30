@@ -31,85 +31,69 @@ const beforeAfter = [
 
 export default function GalleryPage() {
   return (
-    <main className="min-h-screen bg-slate-50">
-      <div className="mx-auto max-w-6xl px-4 py-12 md:px-6">
-        <div className="mb-10 text-center">
-          <p className="badge-soft">Project gallery</p>
-          <h1 className="mt-4 text-3xl font-bold tracking-tight text-slate-900">
-            Real roof and gutter work
-          </h1>
-          <p className="mx-auto mt-3 max-w-2xl text-slate-500">
-            Recent roof cleaning, gutter cleaning, restoration and repaint work
-            from Prime Roof Care projects.
-          </p>
-        </div>
+    <main className="bg-[#f6f4ef] text-[#14201d]">
+      <section className="section-pad">
+        <div className="container-default">
+          <div className="max-w-3xl">
+            <p className="eyebrow">Project gallery</p>
+            <h1 className="mt-5 text-5xl font-black leading-tight tracking-tight sm:text-6xl">
+              Real roof work, shown up close.
+            </h1>
+            <p className="mt-5 text-lg leading-8 text-slate-600">
+              A selection of roof cleaning, gutter cleaning, restoration and
+              detail work from Prime Roof Care projects.
+            </p>
+          </div>
 
-        <section className="mb-12">
-          <h2 className="mb-4 text-lg font-semibold text-slate-900">
-            Recent jobs
-          </h2>
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {recentImages.map((img) => (
+          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {recentImages.map((img, index) => (
               <div
                 key={img.src}
-                className="group overflow-hidden rounded-lg bg-white shadow-sm ring-1 ring-slate-100"
+                className={index === 0 || index === 3 ? "group lg:col-span-2" : "group"}
               >
-                <div className="relative h-48 w-full">
+                <div className="image-lift relative aspect-[4/3]">
                   <Image
                     src={img.src}
                     alt={img.alt}
                     fill
-                    className="object-cover transition duration-300 group-hover:scale-105"
+                    className="object-cover transition duration-500 group-hover:scale-105"
                   />
                 </div>
-                <div className="px-3 py-3">
-                  <p className="line-clamp-1 text-sm font-medium text-slate-800">
-                    {img.alt}
-                  </p>
-                  <p className="mt-1 text-xs text-slate-400">Prime Roof Care</p>
-                </div>
+                <p className="mt-3 text-sm font-black">{img.alt}</p>
               </div>
             ))}
           </div>
-        </section>
+        </div>
+      </section>
 
-        <section>
-          <h2 className="mb-4 text-lg font-semibold text-slate-900">
-            Before and after
-          </h2>
-          <div className="grid gap-5 md:grid-cols-2">
+      <section className="section-pad bg-white">
+        <div className="container-default">
+          <div className="mb-10 flex flex-col justify-between gap-4 md:flex-row md:items-end">
+            <div>
+              <p className="eyebrow">Before / after</p>
+              <h2 className="mt-4 text-4xl font-black tracking-tight">
+                The result should be visible.
+              </h2>
+            </div>
+            <a href="/quote" className="btn-primary">
+              Ask for a quote
+            </a>
+          </div>
+
+          <div className="grid gap-6 lg:grid-cols-3">
             {beforeAfter.map((job) => (
-              <div
-                key={job.title}
-                className="rounded-lg bg-white p-4 shadow-sm ring-1 ring-slate-100"
-              >
-                <p className="mb-3 text-sm font-medium text-slate-800">
-                  {job.title}
-                </p>
-                <div className="grid gap-3 sm:grid-cols-2">
-                  <div className="flex flex-col gap-2">
-                    <div className="relative h-40 w-full overflow-hidden rounded-lg bg-slate-100">
-                      <Image
-                        src={job.before}
-                        alt={job.title + " before"}
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                    <span className="inline-flex w-fit rounded-full bg-slate-100 px-2 py-1 text-[10px] font-semibold uppercase tracking-wide text-slate-500">
+              <div key={job.title} className="rounded-lg border border-black/10 bg-[#f6f4ef] p-4">
+                <p className="mb-4 text-lg font-black">{job.title}</p>
+                <div className="grid gap-3">
+                  <div className="relative aspect-[5/3] overflow-hidden rounded-lg">
+                    <Image src={job.before} alt={job.title + " before"} fill className="object-cover" />
+                    <span className="absolute left-3 top-3 rounded-full bg-white px-3 py-1 text-xs font-black uppercase tracking-wide">
                       Before
                     </span>
                   </div>
-                  <div className="flex flex-col gap-2">
-                    <div className="relative h-40 w-full overflow-hidden rounded-lg bg-slate-100">
-                      <Image
-                        src={job.after}
-                        alt={job.title + " after"}
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                    <span className="inline-flex w-fit rounded-full bg-emerald-50 px-2 py-1 text-[10px] font-semibold uppercase tracking-wide text-emerald-600">
+                  <div className="relative aspect-[5/3] overflow-hidden rounded-lg">
+                    <Image src={job.after} alt={job.title + " after"} fill className="object-cover" />
+                    <span className="absolute left-3 top-3 rounded-full bg-[#d99a2b] px-3 py-1 text-xs font-black uppercase tracking-wide">
                       After
                     </span>
                   </div>
@@ -117,12 +101,8 @@ export default function GalleryPage() {
               </div>
             ))}
           </div>
-        </section>
-
-        <p className="mt-10 text-center text-xs text-slate-400">
-          More projects will be added as work is completed.
-        </p>
-      </div>
+        </div>
+      </section>
     </main>
   );
 }

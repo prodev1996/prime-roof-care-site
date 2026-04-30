@@ -1,74 +1,79 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ClipboardCheck, Home, Sparkles } from "lucide-react";
+import { Camera, ClipboardCheck, ShieldCheck, Sparkles } from "lucide-react";
 
 const steps = [
   {
     icon: ClipboardCheck,
-    title: "Inspect and document",
-    text: "We check gutters, tiles, ridge caps, coatings, flashing and leaks, then explain what needs attention.",
-    accent: "bg-emerald-600",
+    title: "Inspect",
+    text: "Roof, gutters, ridge caps, flashings and problem areas are checked before recommendations are made.",
   },
   {
-    icon: Home,
-    title: "Repair before finishing",
-    text: "Cracked tiles, blocked gutters, loose caps and failed sealant are handled before cleaning or coating.",
-    accent: "bg-sky-600",
+    icon: Camera,
+    title: "Show",
+    text: "We keep the scope plain-English and can provide photos so you know what is happening up there.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Repair",
+    text: "Cracked tiles, failed sealant, blocked drainage and loose capping are handled before finishing work.",
   },
   {
     icon: Sparkles,
-    title: "Clean and finish",
-    text: "High-pressure cleaning, sealing and professional roof coatings improve presentation and help protect the roof.",
-    accent: "bg-amber-500",
+    title: "Finish",
+    text: "Cleaning, coating and cleanup are completed with a focus on street appeal and property protection.",
   },
 ];
 
 export default function ProcessSteps() {
   return (
-    <section className="bg-white py-20">
+    <section className="bg-[#12342d] py-20 text-white">
       <div className="container-default">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="mx-auto max-w-3xl text-center"
-        >
-          <h2 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
-            A roof care process built around prevention.
-          </h2>
-          <p className="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
-            Your roof is a system. We work from drainage and defects through to
-            cleaning and coating, so the finished result has a practical reason.
-          </p>
-        </motion.div>
+        <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.55 }}
+            viewport={{ once: true }}
+          >
+            <p className="inline-flex rounded-full bg-white/10 px-3 py-1 text-xs font-black uppercase tracking-[0.16em] text-[#d99a2b]">
+              Process
+            </p>
+            <h2 className="mt-5 text-4xl font-black leading-tight tracking-tight sm:text-5xl">
+              No mystery. No messy finish. Just a clear roof plan.
+            </h2>
+            <p className="mt-5 max-w-xl text-base leading-7 text-emerald-50/80">
+              A better roof result starts with understanding the condition, then
+              handling the right work in the right order.
+            </p>
+          </motion.div>
 
-        <div className="mt-16 grid gap-8 md:grid-cols-3">
-          {steps.map((step, i) => (
-            <motion.div
-              key={step.title}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: i * 0.16 }}
-              viewport={{ once: true }}
-              whileHover={{ y: -6, transition: { duration: 0.2 } }}
-              className="relative rounded-lg border border-slate-200 bg-slate-50 p-8 transition-all duration-300 hover:bg-white hover:shadow-[0_20px_50px_rgba(15,23,42,0.08)]"
-            >
-              <div
-                className={`relative mb-5 inline-flex h-12 w-12 items-center justify-center rounded-lg ${step.accent} shadow-lg`}
+          <div className="grid gap-4 sm:grid-cols-2">
+            {steps.map((step, index) => (
+              <motion.div
+                key={step.title}
+                initial={{ opacity: 0, y: 26 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.45, delay: index * 0.08 }}
+                viewport={{ once: true }}
+                className="rounded-lg border border-white/15 bg-white/10 p-6 backdrop-blur transition hover:bg-white/15"
               >
-                <step.icon className="h-6 w-6 text-white" />
-              </div>
-
-              <h3 className="mb-2 text-lg font-semibold tracking-tight text-slate-900">
-                {step.title}
-              </h3>
-              <p className="text-sm leading-relaxed text-slate-600">
-                {step.text}
-              </p>
-            </motion.div>
-          ))}
+                <div className="flex items-center justify-between">
+                  <span className="flex h-12 w-12 items-center justify-center rounded-lg bg-[#d99a2b] text-[#14201d]">
+                    <step.icon size={22} />
+                  </span>
+                  <span className="font-mono text-sm font-black text-white/35">
+                    0{index + 1}
+                  </span>
+                </div>
+                <h3 className="mt-6 text-2xl font-black">{step.title}</h3>
+                <p className="mt-3 text-sm leading-6 text-emerald-50/75">
+                  {step.text}
+                </p>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

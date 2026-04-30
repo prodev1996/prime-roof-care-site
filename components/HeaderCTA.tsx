@@ -1,21 +1,21 @@
-import { ShieldCheck, Clock, CheckCircle } from 'lucide-react';
+import { CheckCircle, Clock, ShieldCheck } from "lucide-react";
+
+const items = [
+  { icon: ShieldCheck, label: "Insured work" },
+  { icon: Clock, label: "Fast quote response" },
+  { icon: CheckCircle, label: "Clean, respectful sites" },
+];
 
 export default function HeaderCTA() {
   return (
-    <section className="bg-white border-y border-slate-200">
-      <div className="container-default py-6 grid gap-4 sm:grid-cols-3 text-center text-xs sm:text-sm text-slate-600">
-        <div className="flex items-center justify-center gap-2">
-          <ShieldCheck className="h-4 w-4 text-emerald-600" />
-          <span>Insured</span>
-        </div>
-        <div className="flex items-center justify-center gap-2">
-          <Clock className="h-4 w-4 text-sky-600" />
-          <span>Fast on-site quotes</span>
-        </div>
-        <div className="flex items-center justify-center gap-2">
-          <CheckCircle className="h-4 w-4 text-emerald-600" />
-          <span>Respectful & tidy</span>
-        </div>
+    <section className="border-y border-slate-200 bg-white">
+      <div className="container-default grid gap-4 py-5 text-center text-xs text-slate-700 sm:grid-cols-3 sm:text-sm">
+        {items.map((item) => (
+          <div key={item.label} className="flex items-center justify-center gap-2">
+            <item.icon className="h-4 w-4 text-emerald-600" />
+            <span className="font-medium">{item.label}</span>
+          </div>
+        ))}
       </div>
     </section>
   );

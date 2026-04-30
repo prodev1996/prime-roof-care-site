@@ -1,67 +1,77 @@
 export const metadata = {
-  title: 'Roof Restoration Adelaide | Prime Roof Care',
+  title: "Roof Restoration | Prime Roof Care",
   description:
-    'Full roof restorations done properly: repairs, repointing, sealing and premium coatings. Clear quotes, no subcontractors.',
+    "Roof restorations across Adelaide, Melbourne and Tasmania. Repairs, repointing, cleaning, sealing and roof coatings.",
 };
 
-export default function RoofRestorationPage() {
-  const steps = [
-    'Inspect & explain: photos and clear scope',
-    'Repairs: cracked tiles, loose ridge caps, sealant failures',
-    'Rebedding/repointing where needed',
-    'High-pressure clean & surface prep',
-    'Primer / sealer matched to roof type',
-    'UV-stable topcoats for a durable finish',
-  ];
+const steps = [
+  "Inspect and explain the roof condition with clear scope",
+  "Repair cracked tiles, loose ridge caps and sealant failures",
+  "Rebed or repoint ridge caps where needed",
+  "High-pressure clean and prepare the surface",
+  "Apply primer or sealer matched to the roof material",
+  "Finish with durable topcoats for a consistent result",
+];
 
+export default function RoofRestorationPage() {
   return (
     <section className="bg-slate-50 text-slate-900">
       <div className="section-soft-surface border-b border-slate-200 py-14">
         <div className="container-default max-w-5xl">
-          <p className="badge-soft">No scare tactics • Just the facts</p>
-          <h1 className="mt-4 text-3xl sm:text-4xl font-extrabold tracking-tight">
-            Roof Restoration <span className="text-emerald-600">Adelaide</span>
+          <p className="badge-soft">Repair first, finish second</p>
+          <h1 className="mt-4 text-3xl font-extrabold tracking-tight sm:text-4xl">
+            Roof restoration with the important prep included.
           </h1>
           <p className="mt-3 max-w-3xl text-slate-600">
-            A proper restoration starts with **repairs** — not paint. We fix the
-            causes, prepare the surface, then seal and coat for a lasting result.
+            A proper restoration starts with defects, not paint. We identify the
+            issues, prepare the roof and finish with sealing or coating where it
+            makes sense.
           </p>
-          <div className="mt-6 flex flex-col sm:flex-row gap-4">
-            <a href="/quote" className="btn-solid-lg">Request inspection</a>
-            <a href="tel:0469097690" className="btn-secondary">Call 0469 097 690</a>
+          <div className="mt-6 flex flex-col gap-4 sm:flex-row">
+            <a href="/quote" className="btn-solid-lg">
+              Request inspection
+            </a>
+            <a href="tel:0469097690" className="btn-secondary">
+              Call 0469 097 690
+            </a>
           </div>
         </div>
       </div>
 
-      <div className="container-default max-w-5xl py-14 grid lg:grid-cols-2 gap-10">
+      <div className="container-default grid max-w-5xl gap-10 py-14 lg:grid-cols-2">
         <div className="card-surface p-6 sm:p-8">
           <h2 className="text-xl font-semibold">Our restoration process</h2>
-          <ul className="mt-4 space-y-3 text-sm text-slate-700 list-disc list-inside">
-            {steps.map((s) => <li key={s}>{s}</li>)}
+          <ul className="mt-4 list-inside list-disc space-y-3 text-sm text-slate-700">
+            {steps.map((step) => (
+              <li key={step}>{step}</li>
+            ))}
           </ul>
         </div>
 
         <div className="card-surface p-6 sm:p-8">
           <h2 className="text-xl font-semibold">Why homeowners choose us</h2>
-          <ul className="mt-4 space-y-3 text-sm text-slate-700 list-disc list-inside">
-            <li>Local, insured, family-owned — no subcontractors</li>
-            <li>Itemised scope so you know what you’re paying for</li>
-            <li>Respectful on-site work & clean finishes</li>
-            <li>Aldinga Beach based • Adelaide wide</li>
+          <ul className="mt-4 list-inside list-disc space-y-3 text-sm text-slate-700">
+            <li>Itemised scope so you know what is included</li>
+            <li>Respectful on-site work and clean finishes</li>
+            <li>Repair-only or full restoration options where suitable</li>
+            <li>Operating in Adelaide, Melbourne and Tasmania</li>
           </ul>
         </div>
       </div>
 
-      <div className="py-16 bg-white border-t border-slate-200">
+      <div className="border-t border-slate-200 bg-white py-16">
         <div className="container-default max-w-3xl text-center">
           <h4 className="text-2xl font-extrabold">Thinking about restoring?</h4>
           <p className="mt-2 text-slate-600">
-            We’ll inspect, photograph and quote options — repair only, or full
-            restore. Your choice.
+            We can inspect, photograph and quote practical options for your roof.
           </p>
-          <div className="mt-6 flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="/quote" className="btn-solid-lg">Book inspection</a>
-            <a href="tel:0469097690" className="btn-secondary">Call 0469 097 690</a>
+          <div className="mt-6 flex flex-col justify-center gap-4 sm:flex-row">
+            <a href="/quote" className="btn-solid-lg">
+              Book inspection
+            </a>
+            <a href="tel:0469097690" className="btn-secondary">
+              Call 0469 097 690
+            </a>
           </div>
         </div>
       </div>

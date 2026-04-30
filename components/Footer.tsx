@@ -1,40 +1,32 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import Image from 'next/image';
-import { Mail, Phone, MapPin, MessageCircle } from 'lucide-react';
+import Image from "next/image";
+import Link from "next/link";
+import { Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 
-const SERVICES = [
-  { href: '/services/gutter-cleaning', label: 'Gutter Cleaning' },
-  { href: '/services/roof-cleaning', label: 'Roof Cleaning' },
-  { href: '/services/roof-restoration', label: 'Roof Restoration' },
-  { href: '/services/roof-painting', label: 'Roof Painting / Coating' },
+const services = [
+  { href: "/services/gutter-cleaning", label: "Gutter Cleaning" },
+  { href: "/services/roof-cleaning", label: "Roof Cleaning" },
+  { href: "/services/roof-restoration", label: "Roof Restoration" },
+  { href: "/services/roof-painting", label: "Roof Painting / Coating" },
 ];
 
-const NAV = [
-  { href: '/', label: 'Home' },
-  { href: '/services', label: 'Services' },
-  { href: '/about', label: 'About' },
-  { href: '/gallery', label: 'Gallery' },
-  { href: '/contact', label: 'Contact' },
-  { href: '/quote', label: 'Get a Quote' },
+const nav = [
+  { href: "/", label: "Home" },
+  { href: "/services", label: "Services" },
+  { href: "/about", label: "About" },
+  { href: "/gallery", label: "Gallery" },
+  { href: "/contact", label: "Contact" },
+  { href: "/quote", label: "Get a Quote" },
 ];
 
 export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative border-t border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-950/60 backdrop-blur">
-      {/* Decorative glow */}
-      <div className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute -top-20 -left-20 h-72 w-72 rounded-full bg-emerald-200/25 blur-3xl" />
-        <div className="absolute -bottom-20 -right-20 h-72 w-72 rounded-full bg-sky-200/25 blur-3xl" />
-      </div>
-
-      {/* Main footer content */}
+    <footer className="relative border-t border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-950">
       <div className="container-default py-14">
         <div className="grid gap-10 md:grid-cols-4">
-          {/* Logo + About */}
           <div className="md:col-span-2">
             <div className="flex items-center gap-3">
               <Image
@@ -42,27 +34,28 @@ export default function Footer() {
                 alt="Prime Roof Care Logo"
                 width={56}
                 height={56}
-                className="rounded bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 shadow-card object-contain"
+                className="rounded-lg border border-slate-200 bg-white object-contain shadow-card dark:border-slate-700 dark:bg-slate-900"
               />
               <div>
                 <h3 className="text-lg font-bold text-slate-900 dark:text-white">
                   Prime Roof Care
                 </h3>
                 <p className="text-xs text-slate-500 dark:text-slate-400">
-                  Aldinga Beach • South Australia
+                  Adelaide, Melbourne and Tasmania
                 </p>
               </div>
             </div>
 
-            <p className="text-sm text-slate-600 dark:text-slate-400 mt-4 max-w-md">
-              Local, insured and respectful. We provide honest quotes, proper
-              repairs, and clean finishes across Adelaide.
+            <p className="mt-4 max-w-md text-sm text-slate-600 dark:text-slate-400">
+              Professional roof and gutter care with honest quotes, practical
+              repairs and clean finishes across Adelaide, Melbourne and
+              Tasmania.
             </p>
 
             <div className="mt-5 space-y-3 text-sm">
               <a
                 href="mailto:primeroofcare@gmail.com"
-                className="flex items-center gap-3 text-slate-600 dark:text-slate-400 hover:text-emerald-600 transition"
+                className="flex items-center gap-3 text-slate-600 transition hover:text-emerald-600 dark:text-slate-400"
               >
                 <Mail className="h-4 w-4" />
                 primeroofcare@gmail.com
@@ -70,66 +63,64 @@ export default function Footer() {
 
               <a
                 href="tel:0469097690"
-                className="flex items-center gap-3 text-slate-600 dark:text-slate-400 hover:text-emerald-600 transition"
+                className="flex items-center gap-3 text-slate-600 transition hover:text-emerald-600 dark:text-slate-400"
               >
                 <Phone className="h-4 w-4" /> 0469 097 690
               </a>
 
               <div className="flex items-center gap-3 text-slate-600 dark:text-slate-400">
-                <MapPin className="h-4 w-4" /> Aldinga Beach, SA
+                <MapPin className="h-4 w-4" /> Adelaide, Melbourne, Tasmania
               </div>
 
               <a
                 href="https://wa.me/61469097690?text=Hi!%20I%27d%20like%20a%20roof%20quote."
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 text-slate-600 dark:text-slate-400 hover:text-emerald-600 transition"
+                className="flex items-center gap-3 text-slate-600 transition hover:text-emerald-600 dark:text-slate-400"
               >
                 <MessageCircle className="h-4 w-4" /> WhatsApp Us
               </a>
             </div>
           </div>
 
-          {/* Services */}
           <div>
             <h4 className="text-sm font-semibold text-slate-900 dark:text-white">
               Services
             </h4>
             <ul className="mt-3 space-y-2 text-sm">
-              {SERVICES.map((s) => (
-                <li key={s.href}>
+              {services.map((service) => (
+                <li key={service.href}>
                   <Link
-                    href={s.href}
-                    className="text-slate-600 dark:text-slate-400 hover:text-emerald-600 transition"
+                    href={service.href}
+                    className="text-slate-600 transition hover:text-emerald-600 dark:text-slate-400"
                   >
-                    {s.label}
+                    {service.label}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Navigation */}
           <div>
             <h4 className="text-sm font-semibold text-slate-900 dark:text-white">
               Company
             </h4>
             <ul className="mt-3 space-y-2 text-sm">
-              {NAV.map((n) => (
-                <li key={n.href}>
+              {nav.map((item) => (
+                <li key={item.href}>
                   <Link
-                    href={n.href}
-                    className="text-slate-600 dark:text-slate-400 hover:text-emerald-600 transition"
+                    href={item.href}
+                    className="text-slate-600 transition hover:text-emerald-600 dark:text-slate-400"
                   >
-                    {n.label}
+                    {item.label}
                   </Link>
                 </li>
               ))}
               <li className="pt-1 text-xs text-slate-500 dark:text-slate-500">
                 <Link href="/privacy" className="hover:text-emerald-600">
                   Privacy Policy
-                </Link>{' '}
-                ·{' '}
+                </Link>{" "}
+                -{" "}
                 <Link href="/terms" className="hover:text-emerald-600">
                   Terms
                 </Link>
@@ -139,14 +130,13 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Bottom copyright bar */}
       <div className="border-t border-slate-200 dark:border-slate-800">
-        <div className="container-default py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
+        <div className="container-default flex flex-col items-center justify-between gap-3 py-5 sm:flex-row">
           <p className="text-xs text-slate-500 dark:text-slate-400">
-            © {year} Prime Roof Care. All rights reserved.
+            (c) {year} Prime Roof Care. All rights reserved.
           </p>
           <p className="text-xs text-slate-500 dark:text-slate-400">
-            Website built in Adelaide • Crafted with care
+            Roof care for Adelaide, Melbourne and Tasmania
           </p>
         </div>
       </div>

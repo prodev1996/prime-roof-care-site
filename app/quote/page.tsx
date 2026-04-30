@@ -1,34 +1,33 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
-import QuoteForm from '@/components/QuoteForm';
+import { motion } from "framer-motion";
+import QuoteForm from "@/components/QuoteForm";
 
 export default function QuotePage() {
   return (
-    <section className="bg-slate-50 min-h-[85vh] flex items-center py-20">
-      <div className="max-w-5xl mx-auto px-6 sm:px-8 w-full">
-        {/* Page Heading */}
+    <section className="flex min-h-[85vh] items-center bg-slate-50 py-20">
+      <div className="mx-auto w-full max-w-5xl px-6 sm:px-8">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: 'easeOut' }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="mb-12 text-center"
         >
-          <h1 className="text-4xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">
-            Request a <span className="text-emerald-600">Fast Quote</span>
+          <p className="badge-soft">Fast quote request</p>
+          <h1 className="mt-4 text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl">
+            Tell us what your roof needs.
           </h1>
-          <p className="mt-3 text-slate-600 text-lg max-w-2xl mx-auto">
-            Tell us about your roof, gutters, or leak. We’ll get back to you
-            quickly — no obligation, no pressure.
+          <p className="mx-auto mt-3 max-w-2xl text-lg text-slate-600">
+            Share the location, service and job details. We will respond with
+            the next step for Adelaide, Melbourne or Tasmania.
           </p>
         </motion.div>
 
-        {/* Animated Quote Form */}
         <motion.div
           initial={{ opacity: 0, y: 60 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, ease: 'easeOut', delay: 0.3 }}
+          transition={{ duration: 0.9, ease: "easeOut", delay: 0.3 }}
           viewport={{ once: true }}
         >
           <QuoteForm />

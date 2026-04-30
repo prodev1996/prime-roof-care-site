@@ -1,42 +1,43 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import { motion } from 'framer-motion';
+import Link from "next/link";
+import { motion } from "framer-motion";
 import {
+  ArrowRight,
   Droplets,
+  Paintbrush,
   Sparkles,
   Wrench,
-  Paintbrush,
-} from 'lucide-react';
+} from "lucide-react";
 
 const services = [
   {
     icon: Droplets,
-    title: 'Gutter Cleaning',
-    desc: 'We clear out leaves, sludge and blockages so water actually drains — protecting fascia, walls and foundations.',
-    href: '/services/gutter-cleaning',
-    accent: 'from-sky-500 to-cyan-400',
+    title: "Gutter Cleaning",
+    desc: "Leaves, sludge and downpipe blockages cleared so rainwater drains away from fascia, walls and foundations.",
+    href: "/services/gutter-cleaning",
+    accent: "bg-sky-50 text-sky-700 border-sky-100",
   },
   {
     icon: Sparkles,
-    title: 'Roof Cleaning',
-    desc: 'High-pressure cleaning removes moss, lichen, salt and grime. Instantly lifts street appeal and prepares for coating.',
-    href: '/services/roof-cleaning',
-    accent: 'from-emerald-500 to-teal-400',
+    title: "Roof Cleaning",
+    desc: "High-pressure cleaning removes moss, lichen, salt and grime, lifting street appeal and preparing surfaces for coating.",
+    href: "/services/roof-cleaning",
+    accent: "bg-emerald-50 text-emerald-700 border-emerald-100",
   },
   {
     icon: Wrench,
-    title: 'Roof Restoration',
-    desc: 'We repair cracked tiles, ridge caps and leaks, then seal and protect the roof so it keeps doing its job.',
-    href: '/services/roof-restoration',
-    accent: 'from-amber-500 to-yellow-400',
+    title: "Roof Restoration",
+    desc: "Cracked tiles, ridge caps, leaks and surface issues repaired before sealing, coating or finishing work begins.",
+    href: "/services/roof-restoration",
+    accent: "bg-amber-50 text-amber-700 border-amber-100",
   },
   {
     icon: Paintbrush,
-    title: 'Roof Painting / Coating',
-    desc: 'Professional roof recoating for a modern, even finish that lasts in South Australian weather.',
-    href: '/services/roof-painting',
-    accent: 'from-rose-500 to-pink-400',
+    title: "Roof Painting / Coating",
+    desc: "Professional recoating for a modern, even finish across concrete tile, terracotta and metal roofs.",
+    href: "/services/roof-painting",
+    accent: "bg-rose-50 text-rose-700 border-rose-100",
   },
 ];
 
@@ -48,48 +49,40 @@ export default function ServiceCards() {
       viewport={{ once: true }}
       variants={{
         hidden: {},
-        visible: { transition: { staggerChildren: 0.15 } },
+        visible: { transition: { staggerChildren: 0.12 } },
       }}
-      className="grid md:grid-cols-2 xl:grid-cols-4 gap-8"
+      className="grid gap-6 md:grid-cols-2 xl:grid-cols-4"
     >
-      {services.map((s, i) => (
+      {services.map((service) => (
         <motion.div
-          key={s.title}
+          key={service.title}
           variants={{
-            hidden: { opacity: 0, y: 40 },
-            visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+            hidden: { opacity: 0, y: 30 },
+            visible: { opacity: 1, y: 0, transition: { duration: 0.45 } },
           }}
-          whileHover={{ y: -8, transition: { duration: 0.3 } }}
+          whileHover={{ y: -6, transition: { duration: 0.25 } }}
         >
           <Link
-            href={s.href}
-            className="relative block bg-white rounded-2xl border border-slate-200 p-8 shadow-[0_6px_20px_rgba(0,0,0,0.05)] hover:shadow-[0_12px_30px_rgba(16,185,129,0.12)] transition-all duration-300"
+            href={service.href}
+            className="relative block h-full rounded-lg border border-slate-200 bg-white p-7 shadow-[0_10px_30px_rgba(15,23,42,0.06)] transition-all duration-300 hover:border-emerald-200 hover:shadow-[0_18px_38px_rgba(15,23,42,0.10)]"
           >
-            {/* Gradient accent overlay */}
             <div
-              className={`absolute inset-0 bg-gradient-to-br ${s.accent} opacity-5 rounded-2xl`}
-            ></div>
-
-            {/* Icon */}
-            <div
-              className={`relative flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br ${s.accent} shadow-lg mb-6`}
+              className={`relative mb-6 flex h-12 w-12 items-center justify-center rounded-lg border ${service.accent}`}
             >
-              <s.icon className="text-white w-6 h-6" />
+              <service.icon className="h-6 w-6" />
             </div>
 
-            {/* Title */}
-            <h3 className="text-slate-900 font-semibold text-lg tracking-tight mb-3">
-              {s.title}
+            <h3 className="mb-3 text-lg font-semibold tracking-tight text-slate-900">
+              {service.title}
             </h3>
 
-            {/* Description */}
-            <p className="text-slate-600 text-sm leading-relaxed">
-              {s.desc}
+            <p className="text-sm leading-relaxed text-slate-600">
+              {service.desc}
             </p>
 
-            {/* CTA */}
-            <div className="mt-6 text-emerald-600 font-medium text-sm group-hover:underline">
-              Learn more →
+            <div className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-emerald-700">
+              Learn more
+              <ArrowRight size={15} />
             </div>
           </Link>
         </motion.div>

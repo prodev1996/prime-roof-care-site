@@ -5,13 +5,14 @@ import Footer from "@/components/Footer";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 
 export const metadata: Metadata = {
-  title: "Prime Roof Care | Roof Cleaning, Gutter Cleaning & Restoration Adelaide",
+  metadataBase: new URL("https://www.primeroofcare.com.au"),
+  title: "Prime Roof Care | Roof Cleaning, Gutter Cleaning & Restoration",
   description:
-    "Local, licensed and insured roof & gutter specialists based in Aldinga Beach and servicing Adelaide. Gutter cleaning, roof cleaning, full restoration and professional roof painting.",
+    "Professional roof and gutter care operating in Adelaide, Melbourne and Tasmania. Gutter cleaning, roof cleaning, roof restoration, repairs and roof painting.",
   openGraph: {
     title: "Prime Roof Care",
     description:
-      "Adelaide gutter cleaning, roof cleaning, restoration & painting. Licensed and insured.",
+      "Roof cleaning, gutter cleaning, restoration and painting across Adelaide, Melbourne and Tasmania.",
     images: ["/hero-roof.jpg"],
     type: "website",
   },
@@ -25,7 +26,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#10b981",
+  themeColor: "#059669",
 };
 
 export default function RootLayout({
@@ -35,14 +36,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="min-h-screen flex flex-col bg-slate-50 text-slate-900 antialiased">
+      <body className="flex min-h-screen flex-col bg-slate-50 text-slate-900 antialiased">
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />
-
         <FloatingWhatsApp
           phone="0469097690"
-          message="Hi! I'd like a roof or gutter quote in Adelaide."
+          message="Hi! I'd like a roof or gutter quote."
           offset={20}
         />
       </body>

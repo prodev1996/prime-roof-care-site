@@ -1,9 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import Link from "next/link";
+import { useEffect, useState } from "react";
 import Image from "next/image";
-import { Phone, Menu, X } from "lucide-react";
+import Link from "next/link";
+import { MapPin, Menu, Phone, X } from "lucide-react";
 import { usePathname } from "next/navigation";
 
 const navLinks = [
@@ -22,22 +22,32 @@ export default function Navbar() {
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
     window.addEventListener("scroll", onScroll);
+    onScroll();
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
     <header className="sticky top-0 z-50">
-      {/* thin gradient strip */}
-      <div className="h-[3px] w-full bg-gradient-to-r from-emerald-400 via-blue-300 to-emerald-500" />
+      <div className="bg-slate-900 text-white">
+        <div className="mx-auto flex max-w-7xl items-center justify-center gap-2 px-4 py-2 text-xs font-medium md:justify-between md:px-6">
+          <span className="inline-flex items-center gap-2">
+            <MapPin size={14} className="text-emerald-300" />
+            Adelaide, Melbourne and Tasmania
+          </span>
+          <span className="hidden text-slate-300 md:inline">
+            Roof cleaning, gutters, repairs, restoration and coating
+          </span>
+        </div>
+      </div>
+
       <div
         className={`backdrop-blur transition-all ${
-          scrolled ? "bg-white/90 shadow-sm" : "bg-white/70"
+          scrolled ? "bg-white/95 shadow-sm" : "bg-white/85"
         }`}
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-4 py-3 md:px-6">
-          {/* Logo + brand */}
           <Link href="/" className="flex items-center gap-3">
-            <div className="flex h-16 w-28 items-center justify-center rounded-xl bg-white px-2 shadow-sm ring-1 ring-slate-100 overflow-hidden">
+            <div className="flex h-14 w-24 items-center justify-center overflow-hidden rounded-lg bg-white px-2 shadow-sm ring-1 ring-slate-100">
               <Image
                 src="/logo.png"
                 alt="Prime Roof Care"
@@ -51,67 +61,64 @@ export default function Navbar() {
               <p className="text-base font-semibold text-slate-900">
                 Prime Roof Care
               </p>
-              <p className="text-xs text-slate-500">South Australia</p>
+              <p className="text-xs text-slate-500">Roof & gutter care</p>
               <p className="text-[10px] uppercase tracking-wide text-slate-400">
                 YOUR ROOF, OUR RESPONSIBILITY
               </p>
             </div>
           </Link>
 
-          {/* Desktop nav */}
           <nav className="hidden items-center gap-6 md:flex">
             {navLinks.map((item) => {
               const isActive =
                 item.href === "/"
                   ? pathname === "/"
                   : pathname.startsWith(item.href);
-            return (
-              <Link
-                key={item.name}
-                href={item.href}
-                className={`relative text-sm font-medium transition ${
-                  isActive
-                    ? "text-slate-900"
-                    : "text-slate-500 hover:text-slate-900"
-                }`}
-              >
-                {item.name}
-                {isActive && (
-                  <span className="absolute -bottom-2 left-0 h-[2px] w-full rounded-full bg-emerald-400" />
-                )}
-              </Link>
-            );
+
+              return (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className={`relative text-sm font-medium transition ${
+                    isActive
+                      ? "text-slate-900"
+                      : "text-slate-500 hover:text-slate-900"
+                  }`}
+                >
+                  {item.name}
+                  {isActive && (
+                    <span className="absolute -bottom-2 left-0 h-[2px] w-full rounded-full bg-emerald-500" />
+                  )}
+                </Link>
+              );
             })}
           </nav>
 
-          {/* Desktop actions */}
           <div className="hidden items-center gap-3 md:flex">
             <Link
               href="/quote"
-              className="rounded-full bg-emerald-50 px-4 py-2 text-sm font-semibold text-emerald-700 shadow-sm shadow-emerald-50 transition hover:bg-emerald-100"
+              className="rounded-lg bg-emerald-50 px-4 py-2 text-sm font-semibold text-emerald-700 shadow-sm shadow-emerald-50 transition hover:bg-emerald-100"
             >
               Get a Quote
             </Link>
             <a
               href="tel:0469097690"
-              className="inline-flex items-center gap-2 rounded-full bg-emerald-500 px-5 py-2 text-sm font-semibold text-white shadow-md transition hover:bg-emerald-600"
+              className="inline-flex items-center gap-2 rounded-lg bg-emerald-600 px-5 py-2 text-sm font-semibold text-white shadow-md transition hover:bg-emerald-500"
             >
               <Phone size={16} />
               0469 097 690
             </a>
           </div>
 
-          {/* Mobile button */}
           <button
             onClick={() => setIsOpen((prev) => !prev)}
-            className="inline-flex items-center justify-center rounded-full bg-white p-2 text-slate-700 shadow-sm ring-1 ring-slate-200 md:hidden"
+            className="inline-flex items-center justify-center rounded-lg bg-white p-2 text-slate-700 shadow-sm ring-1 ring-slate-200 md:hidden"
             aria-label="Toggle menu"
           >
             {isOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
 
-        {/* Mobile menu */}
         {isOpen && (
           <div className="border-t bg-white/95 pb-4 pt-2 shadow-sm md:hidden">
             <div className="mx-auto flex max-w-7xl flex-col gap-2 px-4">
@@ -143,7 +150,7 @@ export default function Navbar() {
               <a
                 href="tel:0469097690"
                 onClick={() => setIsOpen(false)}
-                className="inline-flex items-center gap-2 rounded-lg bg-emerald-500 px-3 py-2 text-sm font-semibold text-white hover:bg-emerald-600"
+                className="inline-flex items-center gap-2 rounded-lg bg-emerald-600 px-3 py-2 text-sm font-semibold text-white hover:bg-emerald-500"
               >
                 <Phone size={16} />
                 0469 097 690

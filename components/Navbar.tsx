@@ -7,6 +7,7 @@ import { Menu, Phone, ShieldCheck, X } from "lucide-react";
 import { usePathname } from "next/navigation";
 
 const navLinks = [
+  { name: "Home", href: "/" },
   { name: "Services", href: "/services" },
   { name: "Before & After", href: "/before-after" },
   { name: "Gallery", href: "/gallery" },

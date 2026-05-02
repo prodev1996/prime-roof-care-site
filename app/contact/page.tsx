@@ -1,5 +1,8 @@
 import ContactForm from "@/components/ContactForm";
 import { Mail, MapPin, Phone } from "lucide-react";
+import { contactMetadata } from "./metadata";
+
+export const metadata = contactMetadata;
 
 const contact = [
   { icon: Phone, label: "Phone", value: "0469 097 690", href: "tel:0469097690" },

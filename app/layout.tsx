@@ -6,15 +6,32 @@ import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.primeroofcare.com.au"),
-  title: "Prime Roof Care | Roof Cleaning, Gutter Cleaning & Restoration",
+  title: {
+    default:
+      "Prime Roof Care | Roof Cleaning, Gutters & Restoration Across Adelaide, Victoria & Tasmania",
+    template: "%s | Prime Roof Care",
+  },
   description:
-    "Professional roof and gutter care operating in Adelaide, Victoria and Tasmania. Gutter cleaning, roof cleaning, roof restoration, repairs and roof painting.",
+    "Prime Roof Care provides roof cleaning, gutter cleaning, roof restoration, repairs and roof coating across Adelaide, Victoria and Tasmania.",
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
-    title: "Prime Roof Care",
+    title:
+      "Prime Roof Care | Roof Cleaning, Gutters & Restoration Across Adelaide, Victoria & Tasmania",
     description:
-      "Roof cleaning, gutter cleaning, restoration and painting across Adelaide, Victoria and Tasmania.",
+      "Professional roof cleaning, gutter cleaning, roof restoration, repairs and coating across Adelaide, Victoria and Tasmania.",
+    url: "https://www.primeroofcare.com.au",
+    siteName: "Prime Roof Care",
     images: ["/hero-roof.jpg"],
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Prime Roof Care",
+    description:
+      "Roof cleaning, gutter cleaning, restoration and coating across Adelaide, Victoria and Tasmania.",
+    images: ["/hero-roof.jpg"],
   },
   robots: {
     index: true,
@@ -34,9 +51,33 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const businessSchema = {
+    "@context": "https://schema.org",
+    "@type": "RoofingContractor",
+    name: "Prime Roof Care",
+    url: "https://www.primeroofcare.com.au",
+    logo: "https://www.primeroofcare.com.au/logo.png",
+    image: "https://www.primeroofcare.com.au/hero-roof.jpg",
+    telephone: "+61469097690",
+    email: "primeroofcare@gmail.com",
+    areaServed: ["Adelaide", "Victoria", "Tasmania"],
+    serviceType: [
+      "Roof cleaning",
+      "Gutter cleaning",
+      "Roof restoration",
+      "Roof repairs",
+      "Roof coating",
+    ],
+    sameAs: ["https://www.primeroofcare.com.au"],
+  };
+
   return (
     <html lang="en" suppressHydrationWarning>
       <body className="flex min-h-screen flex-col bg-slate-50 text-slate-900 antialiased">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(businessSchema) }}
+        />
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />

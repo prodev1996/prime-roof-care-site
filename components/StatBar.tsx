@@ -16,7 +16,7 @@ const stats = [
   },
   {
     icon: Camera,
-    value: "Photo proof",
+    value: "Project photos",
     label: "Before/after project imagery available",
   },
   {

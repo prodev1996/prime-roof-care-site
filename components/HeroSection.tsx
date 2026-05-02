@@ -23,7 +23,7 @@ const services = [
 ];
 
 const proof = [
-  "Before/after proof",
+  "Before/after results",
   "Clean site finish",
   "Adelaide, Victoria and Tasmania",
 ];

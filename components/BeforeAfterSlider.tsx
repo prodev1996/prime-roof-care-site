@@ -79,7 +79,7 @@ export default function BeforeAfterSlider({
         />
       </div>
 
-      <div className={`grid gap-3 ${compact ? "p-4" : "p-5"} sm:grid-cols-[1fr_auto] sm:items-end`}>
+      <div className={`grid gap-3 ${compact ? "p-4" : "p-5"}`}>
         <div>
           <p className="text-xs font-black uppercase tracking-[0.16em] text-[#0f8a62]">
             {location}
@@ -91,9 +91,6 @@ export default function BeforeAfterSlider({
             <p className="mt-2 text-sm leading-6 text-slate-600">{detail}</p>
           ) : null}
         </div>
-        <span className="inline-flex w-fit rounded-full border border-emerald-900/10 bg-[#f6f4ef] px-3 py-1 text-xs font-black uppercase tracking-[0.14em] text-[#12342d]">
-          Photo proof
-        </span>
       </div>
     </article>
   );

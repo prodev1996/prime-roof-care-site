@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { ArrowRight, Camera, MapPin } from "lucide-react";
 import Link from "next/link";
+import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 
 const regions = [
   {
@@ -61,10 +62,15 @@ export default function ProofShowcase() {
               ))}
             </div>
 
-            <Link href="/gallery" className="btn-primary mt-8">
-              View Project Gallery
-              <ArrowRight size={18} className="ml-2" />
-            </Link>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <Link href="/before-after" className="btn-primary">
+                See Before & After
+                <ArrowRight size={18} className="ml-2" />
+              </Link>
+              <Link href="/gallery" className="btn-secondary">
+                View Gallery
+              </Link>
+            </div>
           </motion.div>
 
           <motion.div
@@ -72,30 +78,17 @@ export default function ProofShowcase() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
-            className="grid gap-4 sm:grid-cols-2"
+            className="space-y-5"
           >
-            <div className="space-y-4">
-              <div className="image-lift relative aspect-[4/5]">
-                <Image
-                  src="/gallery/job2-before.jpg"
-                  alt="Roof and gutter work before cleaning"
-                  fill
-                  className="object-cover"
-                />
-                <span className="absolute left-3 top-3 rounded-full bg-white px-3 py-1 text-xs font-black uppercase tracking-wide text-[#14201d]">
-                  Before
-                </span>
-              </div>
-              <div className="image-lift relative aspect-[5/3]">
-                <Image
-                  src="/gallery/IMG_3853.jpg"
-                  alt="Roof detail inspection"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            </div>
-            <div className="space-y-4 sm:pt-12">
+            <BeforeAfterSlider
+              before="/gallery/job2-before.jpg"
+              after="/gallery/job2-after.jpg"
+              title="Gutter edge clean-up"
+              location="Project proof"
+              detail="A clearer result around the roof edge and gutter line."
+              aspect="aspect-[5/4]"
+            />
+            <div className="grid gap-4 sm:grid-cols-2">
               <div className="image-lift relative aspect-[5/3]">
                 <Image
                   src="/gallery/3.jpg"
@@ -104,16 +97,13 @@ export default function ProofShowcase() {
                   className="object-cover"
                 />
               </div>
-              <div className="image-lift relative aspect-[4/5]">
+              <div className="image-lift relative aspect-[5/3]">
                 <Image
-                  src="/gallery/job2-after.jpg"
-                  alt="Roof and gutter work after cleaning"
+                  src="/gallery/IMG_3853.jpg"
+                  alt="Roof detail inspection"
                   fill
                   className="object-cover"
                 />
-                <span className="absolute left-3 top-3 rounded-full bg-[#d99a2b] px-3 py-1 text-xs font-black uppercase tracking-wide text-[#14201d]">
-                  After
-                </span>
               </div>
             </div>
           </motion.div>

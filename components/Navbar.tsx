@@ -8,7 +8,9 @@ import { usePathname } from "next/navigation";
 
 const navLinks = [
   { name: "Services", href: "/services" },
+  { name: "Before & After", href: "/before-after" },
   { name: "Gallery", href: "/gallery" },
+  { name: "Areas", href: "/areas" },
   { name: "About", href: "/about" },
   { name: "Contact", href: "/contact" },
 ];
@@ -62,7 +64,7 @@ export default function Navbar() {
             </span>
           </Link>
 
-          <nav className="hidden items-center gap-1 rounded-full border border-black/10 bg-[#f6f4ef] p-1 md:flex">
+          <nav className="hidden items-center gap-1 rounded-full border border-black/10 bg-[#f6f4ef] p-1 lg:flex">
             {navLinks.map((item) => {
               const active =
                 item.href === "/"
@@ -72,7 +74,7 @@ export default function Navbar() {
                 <Link
                   key={item.name}
                   href={item.href}
-                  className={`rounded-full px-4 py-2 text-sm font-bold transition ${
+                  className={`rounded-full px-3 py-2 text-sm font-bold transition xl:px-4 ${
                     active
                       ? "bg-white text-[#12342d] shadow-sm"
                       : "text-slate-600 hover:bg-white/70 hover:text-[#12342d]"
@@ -84,7 +86,7 @@ export default function Navbar() {
             })}
           </nav>
 
-          <div className="hidden items-center gap-2 md:flex">
+          <div className="hidden items-center gap-2 lg:flex">
             <a href="tel:0469097690" className="btn-secondary min-h-10 px-4 py-2 text-sm">
               <Phone size={16} className="mr-2" />
               0469 097 690
@@ -97,7 +99,7 @@ export default function Navbar() {
           <button
             type="button"
             onClick={() => setIsOpen((prev) => !prev)}
-            className="inline-flex h-11 w-11 items-center justify-center rounded-lg border border-black/10 bg-white text-[#14201d] shadow-sm md:hidden"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-lg border border-black/10 bg-white text-[#14201d] shadow-sm lg:hidden"
             aria-label="Toggle menu"
           >
             {isOpen ? <X size={20} /> : <Menu size={20} />}
@@ -105,7 +107,7 @@ export default function Navbar() {
         </div>
 
         {isOpen && (
-          <div className="border-t border-black/10 bg-white pb-4 pt-2 md:hidden">
+          <div className="border-t border-black/10 bg-white pb-4 pt-2 lg:hidden">
             <div className="container-default flex flex-col gap-2">
               {navLinks.map((item) => (
                 <Link

@@ -13,7 +13,9 @@ const services = [
 
 const nav = [
   { href: "/services", label: "Services" },
+  { href: "/before-after", label: "Before & After" },
   { href: "/gallery", label: "Gallery" },
+  { href: "/areas", label: "Service Areas" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
   { href: "/quote", label: "Get a Quote" },

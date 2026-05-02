@@ -35,13 +35,13 @@ export default function HeroSection() {
         src="/hero-roof.jpg"
         alt="Prime Roof Care roof cleaning and restoration"
         fill
-        className="object-cover opacity-50"
+        className="object-cover opacity-45 sm:opacity-50"
         priority
       />
-      <div className="absolute inset-0 bg-[linear-gradient(105deg,rgba(9,32,27,0.98)_0%,rgba(18,52,45,0.90)_46%,rgba(18,52,45,0.30)_78%,rgba(9,32,27,0.78)_100%)]" />
-      <div className="absolute inset-0 premium-grid opacity-55" />
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(9,32,27,0.94)_0%,rgba(18,52,45,0.84)_52%,rgba(9,32,27,0.92)_100%)] lg:bg-[linear-gradient(105deg,rgba(9,32,27,0.98)_0%,rgba(18,52,45,0.90)_46%,rgba(18,52,45,0.30)_78%,rgba(9,32,27,0.78)_100%)]" />
+      <div className="absolute inset-0 premium-grid opacity-35 sm:opacity-55" />
 
-      <div className="container-default relative flex min-h-[690px] flex-col justify-between pb-6 pt-12 sm:pt-16 lg:pt-16">
+      <div className="container-default relative flex min-h-[690px] flex-col justify-between pb-6 pt-10 sm:pt-16 lg:pt-16">
         <div className="grid gap-10 lg:grid-cols-[0.95fr_0.78fr] lg:items-center">
           <motion.div
             initial={{ opacity: 0, y: 28 }}
@@ -88,6 +88,33 @@ export default function HeroSection() {
                 </motion.div>
               ))}
             </div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 22 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+              className="mt-7 overflow-hidden rounded-lg border border-white/20 bg-white/12 p-2 shadow-[0_24px_60px_rgba(0,0,0,0.22)] backdrop-blur lg:hidden"
+            >
+              <div className="relative aspect-[4/3] overflow-hidden rounded-lg">
+                <Image
+                  src="/gallery/job2-after.jpg"
+                  alt="Finished roof edge clean-up by Prime Roof Care"
+                  fill
+                  sizes="100vw"
+                  className="object-cover"
+                  priority
+                />
+                <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_45%,rgba(9,32,27,0.78))]" />
+                <div className="absolute bottom-3 left-3 right-3">
+                  <p className="text-xs font-black uppercase tracking-[0.14em] text-[#d99a2b]">
+                    Recent result
+                  </p>
+                  <p className="mt-1 text-lg font-black leading-tight text-white">
+                    Roof edge clean-up with a tidy finish.
+                  </p>
+                </div>
+              </div>
+            </motion.div>
           </motion.div>
 
           <motion.div

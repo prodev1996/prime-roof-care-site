@@ -1,11 +1,20 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, PhoneCall } from "lucide-react";
 
 export default function FinalCTA() {
   return (
-    <section className="bg-[#14201d] py-16 text-white">
-      <div className="container-default">
-        <div className="grid gap-8 rounded-lg border border-white/15 bg-white/8 p-6 sm:p-8 lg:grid-cols-[1fr_auto] lg:items-center">
+    <section className="relative overflow-hidden bg-[#14201d] py-16 text-white">
+      <Image
+        src="/gallery/8.jpg"
+        alt="Prime Roof Care roof work"
+        fill
+        className="object-cover opacity-[0.18]"
+      />
+      <div className="absolute inset-0 bg-[#14201d]/86" />
+      <div className="absolute inset-0 premium-grid opacity-30" />
+      <div className="container-default relative">
+        <div className="grid gap-8 rounded-lg border border-white/15 bg-white/10 p-6 shadow-[0_30px_90px_rgba(0,0,0,0.24)] backdrop-blur sm:p-8 lg:grid-cols-[1fr_auto] lg:items-center">
           <div>
             <p className="text-xs font-black uppercase tracking-[0.16em] text-[#d99a2b]">
               Ready when the roof is not

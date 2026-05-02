@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { MapPin, ShieldCheck, Sparkles } from "lucide-react";
+import { Camera, MapPin, ShieldCheck, Sparkles } from "lucide-react";
 
 const stats = [
   {
@@ -15,16 +15,21 @@ const stats = [
     label: "Adelaide, Victoria and Tasmania",
   },
   {
-    icon: Sparkles,
+    icon: Camera,
     value: "Photo proof",
     label: "Before/after project imagery available",
+  },
+  {
+    icon: Sparkles,
+    value: "Clean finish",
+    label: "Street appeal, drainage and cleanup handled",
   },
 ];
 
 export default function StatBar() {
   return (
-    <section className="bg-[#f6f4ef] py-8">
-      <div className="container-default grid gap-4 md:grid-cols-3">
+    <section className="roof-lines bg-[#f6f4ef] py-8">
+      <div className="container-default grid gap-4 md:grid-cols-2 xl:grid-cols-4">
         {stats.map((item, index) => (
           <motion.div
             key={item.value}
@@ -32,9 +37,10 @@ export default function StatBar() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.45, delay: index * 0.08 }}
             viewport={{ once: true }}
-            className="flex items-center gap-4 rounded-lg border border-black/10 bg-white p-5 shadow-[0_18px_45px_rgba(20,32,29,0.08)]"
+            whileHover={{ y: -5 }}
+            className="group flex items-center gap-4 rounded-lg border border-black/10 bg-white p-5 shadow-[0_18px_45px_rgba(20,32,29,0.08)] transition hover:border-[#0f8a62]/25 hover:shadow-[0_26px_70px_rgba(20,32,29,0.13)]"
           >
-            <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-[#12342d] text-[#d99a2b]">
+            <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-[#12342d] text-[#d99a2b] transition group-hover:bg-[#d99a2b] group-hover:text-[#14201d]">
               <item.icon size={22} />
             </div>
             <div>

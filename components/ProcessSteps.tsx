@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { Camera, ClipboardCheck, ShieldCheck, Sparkles } from "lucide-react";
 
 const steps = [
@@ -12,7 +13,7 @@ const steps = [
   {
     icon: Camera,
     title: "Show",
-    text: "We keep the scope plain-English and can provide photos so you know what is happening up there.",
+    text: "The scope stays plain-English with photos where useful, so the condition is easy to understand.",
   },
   {
     icon: ShieldCheck,
@@ -28,8 +29,9 @@ const steps = [
 
 export default function ProcessSteps() {
   return (
-    <section className="bg-[#12342d] py-20 text-white">
-      <div className="container-default">
+    <section className="relative overflow-hidden bg-[#12342d] py-20 text-white">
+      <div className="absolute inset-0 premium-grid opacity-35" />
+      <div className="container-default relative">
         <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
@@ -41,12 +43,23 @@ export default function ProcessSteps() {
               Process
             </p>
             <h2 className="mt-5 text-4xl font-black leading-tight tracking-tight sm:text-5xl">
-              No mystery. No messy finish. Just a clear roof plan.
+              A sharper roof result, handled in the right order.
             </h2>
             <p className="mt-5 max-w-xl text-base leading-7 text-emerald-50/80">
-              A better roof result starts with understanding the condition, then
-              handling the right work in the right order.
+              A good finish starts before any washing or coating begins. The
+              roof is checked, explained, repaired where needed and cleaned up
+              properly before the job is called done.
             </p>
+            <div className="mt-8 hidden overflow-hidden rounded-lg border border-white/15 bg-white/10 p-3 shadow-[0_24px_70px_rgba(0,0,0,0.22)] lg:block">
+              <div className="image-sheen relative aspect-[5/3] overflow-hidden rounded-lg">
+                <Image
+                  src="/gallery/WhatsApp Image 2026-05-02 at 6.47.41 PM.jpeg"
+                  alt="Prime Roof Care detail work"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </div>
           </motion.div>
 
           <div className="grid gap-4 sm:grid-cols-2">
@@ -57,6 +70,7 @@ export default function ProcessSteps() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.45, delay: index * 0.08 }}
                 viewport={{ once: true }}
+                whileHover={{ y: -6 }}
                 className="rounded-lg border border-white/15 bg-white/10 p-6 backdrop-blur transition hover:bg-white/15"
               >
                 <div className="flex items-center justify-between">

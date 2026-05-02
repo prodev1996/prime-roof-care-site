@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { Quote, Star } from "lucide-react";
 
 const testimonials = [
@@ -27,11 +28,21 @@ const testimonials = [
 export default function Testimonials() {
   return (
     <section>
-      <div className="mx-auto max-w-3xl text-center">
-        <p className="eyebrow">Customer feedback</p>
-        <h2 className="mt-5 text-4xl font-black tracking-tight text-[#14201d] sm:text-5xl">
-          Work that feels easy from the first call.
-        </h2>
+      <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
+        <div>
+          <p className="eyebrow">Customer feedback</p>
+          <h2 className="mt-5 text-4xl font-black tracking-tight text-[#14201d] sm:text-5xl">
+            Work that feels easy from the first call.
+          </h2>
+        </div>
+        <div className="image-lift relative hidden aspect-[5/2] lg:block">
+          <Image
+            src="/gallery/job3-after.jpg"
+            alt="Finished roof project"
+            fill
+            className="object-cover"
+          />
+        </div>
       </div>
 
       <div className="mt-12 grid gap-5 md:grid-cols-3">
@@ -42,7 +53,8 @@ export default function Testimonials() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.45, delay: index * 0.08 }}
             viewport={{ once: true }}
-            className="rounded-lg border border-black/10 bg-white p-6 shadow-[0_18px_45px_rgba(20,32,29,0.08)]"
+            whileHover={{ y: -6 }}
+            className="rounded-lg border border-black/10 bg-white p-6 shadow-[0_18px_45px_rgba(20,32,29,0.08)] transition hover:border-[#0f8a62]/20 hover:shadow-[0_28px_70px_rgba(20,32,29,0.14)]"
           >
             <Quote className="h-8 w-8 text-[#d99a2b]" />
             <div className="mt-5 flex text-[#d99a2b]">

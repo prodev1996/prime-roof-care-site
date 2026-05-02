@@ -8,12 +8,12 @@ import {
   CheckCircle2,
   ClipboardCheck,
   Droplets,
-  Gauge,
   Paintbrush,
   PhoneCall,
   Sparkles,
   Wrench,
 } from "lucide-react";
+import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 
 const services = [
   { icon: Droplets, label: "Gutters", href: "/services/gutter-cleaning" },
@@ -38,11 +38,11 @@ export default function HeroSection() {
         className="object-cover opacity-50"
         priority
       />
-      <div className="absolute inset-0 bg-[linear-gradient(105deg,rgba(9,32,27,0.98)_0%,rgba(18,52,45,0.92)_42%,rgba(18,52,45,0.35)_76%,rgba(9,32,27,0.82)_100%)]" />
-      <div className="absolute inset-0 premium-grid opacity-80" />
+      <div className="absolute inset-0 bg-[linear-gradient(105deg,rgba(9,32,27,0.98)_0%,rgba(18,52,45,0.90)_46%,rgba(18,52,45,0.30)_78%,rgba(9,32,27,0.78)_100%)]" />
+      <div className="absolute inset-0 premium-grid opacity-55" />
 
-      <div className="container-default relative flex min-h-[850px] flex-col justify-between pb-8 pt-16 sm:pt-20 lg:pt-24">
-        <div className="grid gap-12 lg:grid-cols-[0.98fr_1.02fr] lg:items-center">
+      <div className="container-default relative flex min-h-[690px] flex-col justify-between pb-6 pt-12 sm:pt-16 lg:pt-16">
+        <div className="grid gap-10 lg:grid-cols-[0.95fr_0.78fr] lg:items-center">
           <motion.div
             initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
@@ -51,20 +51,19 @@ export default function HeroSection() {
           >
             <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/12 px-3 py-1.5 text-xs font-black uppercase tracking-[0.16em] text-emerald-50 shadow-[0_16px_38px_rgba(0,0,0,0.18)] backdrop-blur">
               <ClipboardCheck size={15} className="text-[#d99a2b]" />
-              Professional roof care across three regions
+              Adelaide - Victoria - Tasmania
             </div>
 
-            <h1 className="mt-6 max-w-5xl text-5xl font-black leading-[0.92] tracking-tight sm:text-7xl lg:text-[6.6rem]">
-              Roofs that look restored, not just cleaned.
+            <h1 className="mt-6 max-w-3xl text-4xl font-black leading-[0.98] tracking-tight sm:text-6xl lg:text-7xl xl:text-[5.25rem]">
+              Cleaner roofs. Sharper homes.
             </h1>
 
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-emerald-50/90 sm:text-xl">
-              Premium roof cleaning, gutter care, repairs, restorations and
-              coatings with real project photos, tidy crews and clear quote
-              scopes.
+            <p className="mt-5 max-w-2xl text-base leading-7 text-emerald-50/90 sm:text-lg">
+              Roof cleaning, gutter care, restorations and coatings delivered
+              with clear quote scopes, tidy work and real project photos.
             </p>
 
-            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+            <div className="mt-7 flex flex-col gap-3 sm:flex-row">
               <Link href="/quote" className="btn-primary bg-[#d99a2b] text-[#14201d] hover:bg-white">
                 Get a Fast Quote
                 <ArrowRight size={18} className="ml-2" />
@@ -75,7 +74,7 @@ export default function HeroSection() {
               </a>
             </div>
 
-            <div className="mt-8 grid gap-3 text-sm font-semibold text-white/90 sm:grid-cols-3">
+            <div className="mt-7 grid gap-3 text-sm font-semibold text-white/90 sm:grid-cols-3">
               {proof.map((item, index) => (
                 <motion.div
                   key={item}
@@ -95,61 +94,40 @@ export default function HeroSection() {
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.75, ease: "easeOut", delay: 0.1 }}
-            className="relative hidden min-h-[610px] lg:block"
+            className="hidden lg:block"
           >
             <motion.div
-              className="absolute right-0 top-0 w-[72%] overflow-hidden rounded-lg border border-white/20 bg-white/12 p-3 shadow-[0_34px_90px_rgba(0,0,0,0.35)] backdrop-blur-md"
-              animate={{ y: [0, -10, 0] }}
+              className="ml-auto max-w-[520px]"
+              animate={{ y: [0, -7, 0] }}
               transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
             >
-              <div className="image-sheen relative aspect-[4/5] overflow-hidden rounded-lg">
-                <Image
-                  src="/gallery/job4-after.jpg"
-                  alt="Finished roof restoration by Prime Roof Care"
-                  fill
-                  className="object-cover"
-                />
-              </div>
+              <BeforeAfterSlider
+                before="/gallery/job2-before.jpg"
+                after="/gallery/job2-after.jpg"
+                title="Roof edge clean-up"
+                location="Before / after proof"
+                detail="A cleaner roof line and gutter edge, shown with real project photos."
+                aspect="aspect-[5/3]"
+                compact
+                priority
+              />
             </motion.div>
 
             <motion.div
-              className="absolute bottom-16 left-0 w-[47%] overflow-hidden rounded-lg border border-white/20 bg-white p-3 text-[#14201d] shadow-[0_28px_70px_rgba(0,0,0,0.28)]"
-              animate={{ y: [0, 12, 0] }}
-              transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-            >
-              <div className="relative aspect-[4/3] overflow-hidden rounded-lg">
-                <Image
-                  src="/gallery/job4-before.jpg"
-                  alt="Roof before restoration"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <div className="mt-3 flex items-center justify-between">
-                <p className="text-xs font-black uppercase tracking-[0.14em] text-slate-500">
-                  Before
-                </p>
-                <p className="rounded-full bg-[#f6f4ef] px-3 py-1 text-xs font-black">
-                  Photo proof
-                </p>
-              </div>
-            </motion.div>
-
-            <motion.div
-              className="absolute bottom-0 right-8 flex w-[54%] items-center gap-4 rounded-lg border border-white/20 bg-[#d99a2b] p-5 text-[#14201d] shadow-[0_28px_70px_rgba(0,0,0,0.28)]"
-              initial={{ opacity: 0, y: 22 }}
+              className="ml-auto mt-4 grid max-w-[520px] grid-cols-3 gap-3"
+              initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.55, delay: 0.45 }}
+              transition={{ duration: 0.55, delay: 0.35 }}
             >
-              <span className="flex h-12 w-12 items-center justify-center rounded-lg bg-[#14201d] text-white">
-                <Gauge size={22} />
-              </span>
-              <span>
-                <span className="block text-3xl font-black leading-none">3</span>
-                <span className="mt-1 block text-xs font-black uppercase tracking-[0.14em]">
-                  active regions
-                </span>
-              </span>
+              {["Adelaide", "Victoria", "Tasmania"].map((area) => (
+                <Link
+                  key={area}
+                  href="/areas"
+                  className="rounded-lg border border-white/15 bg-white/[0.08] px-4 py-3 text-sm font-black text-white shadow-[0_18px_42px_rgba(0,0,0,0.16)] backdrop-blur transition hover:bg-white/15"
+                >
+                  {area}
+                </Link>
+              ))}
             </motion.div>
           </motion.div>
         </div>
@@ -158,7 +136,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 26 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.65, ease: "easeOut", delay: 0.25 }}
-          className="mt-12 grid overflow-hidden rounded-lg border border-white/20 bg-white/12 shadow-[0_26px_80px_rgba(0,0,0,0.18)] backdrop-blur md:grid-cols-4"
+          className="mt-10 grid overflow-hidden rounded-lg border border-white/20 bg-white/12 shadow-[0_22px_60px_rgba(0,0,0,0.16)] backdrop-blur md:grid-cols-4"
         >
           {services.map((service) => (
             <Link

@@ -12,6 +12,7 @@ type BeforeAfterSliderProps = {
   detail?: string;
   aspect?: string;
   priority?: boolean;
+  compact?: boolean;
 };
 
 export default function BeforeAfterSlider({
@@ -22,6 +23,7 @@ export default function BeforeAfterSlider({
   detail,
   aspect = "aspect-[4/3]",
   priority = false,
+  compact = false,
 }: BeforeAfterSliderProps) {
   const [position, setPosition] = useState(58);
 
@@ -77,19 +79,19 @@ export default function BeforeAfterSlider({
         />
       </div>
 
-      <div className="grid gap-3 p-5 sm:grid-cols-[1fr_auto] sm:items-end">
+      <div className={`grid gap-3 ${compact ? "p-4" : "p-5"} sm:grid-cols-[1fr_auto] sm:items-end`}>
         <div>
           <p className="text-xs font-black uppercase tracking-[0.16em] text-[#0f8a62]">
             {location}
           </p>
-          <h3 className="mt-2 text-2xl font-black leading-tight text-[#14201d]">
+          <h3 className={`mt-2 font-black leading-tight text-[#14201d] ${compact ? "text-xl" : "text-2xl"}`}>
             {title}
           </h3>
           {detail ? (
             <p className="mt-2 text-sm leading-6 text-slate-600">{detail}</p>
           ) : null}
         </div>
-        <span className="inline-flex rounded-full border border-emerald-900/10 bg-[#f6f4ef] px-3 py-1 text-xs font-black uppercase tracking-[0.14em] text-[#12342d]">
+        <span className="inline-flex w-fit rounded-full border border-emerald-900/10 bg-[#f6f4ef] px-3 py-1 text-xs font-black uppercase tracking-[0.14em] text-[#12342d]">
           Photo proof
         </span>
       </div>

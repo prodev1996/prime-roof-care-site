@@ -11,7 +11,7 @@ const regions = [
     text: "Coastal grime, blocked gutters, tiled roof care and restoration quotes.",
   },
   {
-    name: "Melbourne",
+    name: "Victoria",
     text: "Weather-exposed roofs, drainage issues, leak checks and coating prep.",
   },
   {

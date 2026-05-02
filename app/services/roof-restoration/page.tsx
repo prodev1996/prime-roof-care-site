@@ -1,7 +1,7 @@
 export const metadata = {
   title: "Roof Restoration | Prime Roof Care",
   description:
-    "Roof restorations across Adelaide, Melbourne and Tasmania. Repairs, repointing, cleaning, sealing and roof coatings.",
+    "Roof restorations across Adelaide, Victoria and Tasmania. Repairs, repointing, cleaning, sealing and roof coatings.",
 };
 
 const steps = [
@@ -54,7 +54,7 @@ export default function RoofRestorationPage() {
             <li>Itemised scope so you know what is included</li>
             <li>Respectful on-site work and clean finishes</li>
             <li>Repair-only or full restoration options where suitable</li>
-            <li>Operating in Adelaide, Melbourne and Tasmania</li>
+            <li>Operating in Adelaide, Victoria and Tasmania</li>
           </ul>
         </div>
       </div>

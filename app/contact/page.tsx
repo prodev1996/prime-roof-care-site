@@ -4,7 +4,7 @@ import { Mail, MapPin, Phone } from "lucide-react";
 const contact = [
   { icon: Phone, label: "Phone", value: "0469 097 690", href: "tel:0469097690" },
   { icon: Mail, label: "Email", value: "primeroofcare@gmail.com", href: "mailto:primeroofcare@gmail.com" },
-  { icon: MapPin, label: "Operating areas", value: "Adelaide, Melbourne and Tasmania" },
+  { icon: MapPin, label: "Operating areas", value: "Adelaide, Victoria and Tasmania" },
 ];
 
 export default function ContactPage() {
@@ -18,7 +18,7 @@ export default function ContactPage() {
           </h1>
           <p className="mt-5 text-lg leading-8 text-slate-600">
             Send a message about cleaning, gutters, leaks, restoration or
-            coating work across Adelaide, Melbourne or Tasmania.
+            coating work across Adelaide, Victoria or Tasmania.
           </p>
 
           <div className="mt-8 space-y-3">

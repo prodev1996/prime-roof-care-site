@@ -30,7 +30,7 @@ export default function ServicesPage() {
           </h1>
           <p className="mt-5 max-w-2xl text-lg leading-8 text-white/75">
             Cleaning, maintenance and restoration services across Adelaide,
-            Melbourne and Tasmania.
+            Victoria and Tasmania.
           </p>
         </div>
       </section>

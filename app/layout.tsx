@@ -8,11 +8,11 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://www.primeroofcare.com.au"),
   title: "Prime Roof Care | Roof Cleaning, Gutter Cleaning & Restoration",
   description:
-    "Professional roof and gutter care operating in Adelaide, Melbourne and Tasmania. Gutter cleaning, roof cleaning, roof restoration, repairs and roof painting.",
+    "Professional roof and gutter care operating in Adelaide, Victoria and Tasmania. Gutter cleaning, roof cleaning, roof restoration, repairs and roof painting.",
   openGraph: {
     title: "Prime Roof Care",
     description:
-      "Roof cleaning, gutter cleaning, restoration and painting across Adelaide, Melbourne and Tasmania.",
+      "Roof cleaning, gutter cleaning, restoration and painting across Adelaide, Victoria and Tasmania.",
     images: ["/hero-roof.jpg"],
     type: "website",
   },

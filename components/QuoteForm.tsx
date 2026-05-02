@@ -33,7 +33,7 @@ const timeframes = [
   "Just comparing prices",
 ];
 
-const regions = ["Adelaide", "Melbourne", "Tasmania"];
+const regions = ["Adelaide", "Victoria", "Tasmania"];
 
 export default function QuoteForm() {
   const [state, setState] = useState<FormState>("idle");

@@ -173,7 +173,7 @@ export default function ContactForm() {
             className={decorate("address")}
             value={form.address}
             onChange={(e) => setForm({ ...form, address: e.target.value })}
-            placeholder="Adelaide, Melbourne or Tasmania suburb"
+            placeholder="Adelaide, Victoria or Tasmania suburb"
           />
         </div>
 

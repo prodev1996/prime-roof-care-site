@@ -23,7 +23,7 @@ const values = [
   {
     icon: MapPin,
     title: "Three-region coverage",
-    text: "Operating in Adelaide, Melbourne and Tasmania for residential and property work.",
+    text: "Operating in Adelaide, Victoria and Tasmania for residential and property work.",
   },
 ];
 
@@ -48,7 +48,7 @@ export default function AboutPage() {
             </p>
             <p className="mt-4 leading-7 text-slate-600">
               We focus on straight communication, practical scopes and a clean
-              site finish across Adelaide, Melbourne and Tasmania.
+              site finish across Adelaide, Victoria and Tasmania.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <a href="/quote" className="btn-primary">

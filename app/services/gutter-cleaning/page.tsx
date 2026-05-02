@@ -1,7 +1,7 @@
 export const metadata = {
   title: "Gutter Cleaning | Prime Roof Care",
   description:
-    "Professional gutter cleaning across Adelaide, Melbourne and Tasmania. Clear blockages, flush downpipes and keep water moving.",
+    "Professional gutter cleaning across Adelaide, Victoria and Tasmania. Clear blockages, flush downpipes and keep water moving.",
 };
 
 const faq = [
@@ -24,7 +24,7 @@ export default function GutterCleaningPage() {
     <section className="bg-slate-50 text-slate-900">
       <div className="section-soft-surface border-b border-slate-200 py-14">
         <div className="container-default max-w-5xl">
-          <p className="badge-soft">Adelaide, Melbourne and Tasmania</p>
+          <p className="badge-soft">Adelaide, Victoria and Tasmania</p>
           <h1 className="mt-4 text-3xl font-extrabold tracking-tight sm:text-4xl">
             Gutter cleaning that protects the property below.
           </h1>
@@ -62,7 +62,7 @@ export default function GutterCleaningPage() {
             <li>Insured work with tidy cleanup</li>
             <li>Clear quotes without pressure</li>
             <li>Useful notes if we spot roof or gutter issues</li>
-            <li>Operating in Adelaide, Melbourne and Tasmania</li>
+            <li>Operating in Adelaide, Victoria and Tasmania</li>
           </ul>
         </div>
       </div>

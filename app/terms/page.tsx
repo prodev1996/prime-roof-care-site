@@ -32,7 +32,7 @@ export default function TermsPage() {
         <div>
           <h2 className="text-lg font-semibold text-slate-900">Service areas</h2>
           <p className="mt-2 text-slate-600">
-            Prime Roof Care operates in Adelaide, Melbourne and Tasmania.
+            Prime Roof Care operates in Adelaide, Victoria and Tasmania.
             Availability may vary by suburb, job type and scheduling.
           </p>
         </div>

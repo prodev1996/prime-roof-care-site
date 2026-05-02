@@ -19,7 +19,7 @@ export default function QuotePage() {
           </h1>
           <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-slate-600">
             Tell us the region, service and job details. We will respond with
-            the next step for Adelaide, Melbourne or Tasmania.
+            the next step for Adelaide, Victoria or Tasmania.
           </p>
         </motion.div>
 

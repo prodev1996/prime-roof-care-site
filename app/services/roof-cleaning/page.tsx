@@ -1,7 +1,7 @@
 export const metadata = {
   title: "Roof Cleaning | Prime Roof Care",
   description:
-    "Professional roof cleaning across Adelaide, Melbourne and Tasmania. Moss, lichen, salt and grime removal with careful surface preparation.",
+    "Professional roof cleaning across Adelaide, Victoria and Tasmania. Moss, lichen, salt and grime removal with careful surface preparation.",
 };
 
 const faq = [
@@ -60,7 +60,7 @@ export default function RoofCleaningPage() {
           <ul className="mt-4 list-inside list-disc space-y-3 text-sm text-slate-700">
             <li>Careful approach for tile and metal profiles</li>
             <li>Useful before restoration, sealing or repainting</li>
-            <li>Operating in Adelaide, Melbourne and Tasmania</li>
+            <li>Operating in Adelaide, Victoria and Tasmania</li>
           </ul>
         </div>
       </div>

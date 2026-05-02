@@ -39,7 +39,7 @@ export default function Footer() {
             <div>
               <h3 className="text-xl font-black">Prime Roof Care</h3>
               <p className="mt-1 text-sm font-semibold text-white/60">
-                Adelaide / Melbourne / Tasmania
+                Adelaide / Victoria / Tasmania
               </p>
             </div>
           </div>
@@ -61,7 +61,7 @@ export default function Footer() {
             </a>
             <div className="flex items-center gap-3">
               <MapPin className="h-4 w-4" />
-              Adelaide, Melbourne, Tasmania
+              Adelaide, Victoria, Tasmania
             </div>
             <a
               href="https://wa.me/61469097690?text=Hi!%20I%27d%20like%20a%20roof%20quote."
@@ -114,7 +114,7 @@ export default function Footer() {
       <div className="border-t border-white/10">
         <div className="container-default flex flex-col gap-2 py-5 text-xs font-semibold text-white/45 sm:flex-row sm:items-center sm:justify-between">
           <p>(c) {year} Prime Roof Care. All rights reserved.</p>
-          <p>Built for roof care across Adelaide, Melbourne and Tasmania.</p>
+          <p>Built for roof care across Adelaide, Victoria and Tasmania.</p>
         </div>
       </div>
     </footer>

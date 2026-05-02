@@ -12,7 +12,7 @@ const stats = [
   {
     icon: MapPin,
     value: "3 regions",
-    label: "Adelaide, Melbourne and Tasmania",
+    label: "Adelaide, Victoria and Tasmania",
   },
   {
     icon: Sparkles,

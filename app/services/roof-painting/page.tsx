@@ -1,7 +1,7 @@
 export const metadata = {
   title: "Roof Painting / Coating | Prime Roof Care",
   description:
-    "Professional roof painting and coating across Adelaide, Melbourne and Tasmania. Correct cleaning, primers and UV-stable topcoats.",
+    "Professional roof painting and coating across Adelaide, Victoria and Tasmania. Correct cleaning, primers and UV-stable topcoats.",
 };
 
 const faq = [

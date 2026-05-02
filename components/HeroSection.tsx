@@ -24,7 +24,7 @@ const services = [
 const proof = [
   "Photo-backed inspections",
   "Tidy site finish",
-  "Quotes across SA, VIC and TAS",
+  "Quotes across SA, Victoria and TAS",
 ];
 
 export default function HeroSection() {
@@ -50,7 +50,7 @@ export default function HeroSection() {
           >
             <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/12 px-3 py-1.5 text-xs font-black uppercase tracking-[0.16em] text-emerald-50 backdrop-blur">
               <ClipboardCheck size={15} className="text-[#d99a2b]" />
-              Adelaide / Melbourne / Tasmania
+              Adelaide / Victoria / Tasmania
             </div>
 
             <h1 className="mt-6 max-w-4xl text-5xl font-black leading-[0.96] tracking-tight sm:text-7xl lg:text-8xl">

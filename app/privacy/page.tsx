@@ -59,7 +59,7 @@ export default function PrivacyPage() {
         </div>
 
         <p className="pt-4 text-xs text-slate-400">
-          Updated {year} - Prime Roof Care - Adelaide, Melbourne and Tasmania
+          Updated {year} - Prime Roof Care - Adelaide, Victoria and Tasmania
         </p>
       </div>
     </section>

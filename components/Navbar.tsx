@@ -31,7 +31,7 @@ export default function Navbar() {
         <div className="container-default flex items-center justify-center gap-3 py-2 text-[11px] font-bold uppercase tracking-[0.14em] text-emerald-50 md:justify-between">
           <span className="inline-flex items-center gap-2">
             <ShieldCheck size={14} className="text-[#d99a2b]" />
-            Adelaide - Melbourne - Tasmania
+            Adelaide - Victoria - Tasmania
           </span>
           <span className="hidden text-white/70 md:inline">
             Roof cleaning / gutters / restorations / coatings

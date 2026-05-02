@@ -14,7 +14,7 @@ export default function FinalCTA() {
               Send the job details. We will take it from there.
             </h2>
             <p className="mt-4 max-w-2xl leading-7 text-white/70">
-              Quotes available across Adelaide, Melbourne and Tasmania for roof
+              Quotes available across Adelaide, Victoria and Tasmania for roof
               cleaning, gutters, repairs, restoration and coating.
             </p>
           </div>
